@@ -1,4 +1,235 @@
+body {
+  background-color: #dddbdb;
+  font-family: 'Assistant', sans-serif;
+  color: #008037;
+}
+
+.navbar {
+  border-radius: 40px;
+  height: 75px;
+}
+
 .navbar-brand img {
-  max-height: 40px;
+  max-height: 50px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #008037;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  font-weight: bold;
+  color: #008037 !important;
+}
+
+.btn-navbar-right {
+  margin-top: -10px !important;
+  margin-bottom: -10px !important;
+  margin-right: -19px !important;
+  height: 75px;
+  width: 100px;
+  border-radius: 40px;
+}
+
+.btn-login {
+  background-color: #008037;
+  color: #ffffff;
+}
+
+.btn-login:hover {
+  background-color: #00a547;
+  color: #ffffff;
+}
+
+header {
+  padding: 180px 0 165px;
+  margin-top: -80px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.527)), to(rgba(0, 0, 0, 0.5))), url("../images/header.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url("../images/header.jpg");
+  background-size: cover;
+}
+
+header h1, header p {
+  color: #ffffff;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+header p {
+  font-size: 22px;
+}
+
+header .btn-get-started {
+  background-color: #ff2600;
+  color: #ffffff;
+  border-radius: 40px;
+}
+
+header .btn-get-started:hover {
+  background-color: #ff401e;
+  color: #ffffff;
+}
+
+.section-stats {
+  margin-top: -50px;
+}
+
+.section-stats .stats-detail {
+  padding-top: 15px;
+  background-color: #ffffff;
+  padding-left: 40px;
+}
+
+.section-stats h2 {
+  font-size: 30px;
+  margin-bottom: 0;
+}
+
+.section-stats p {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.section-bestseller {
+  min-height: 540px;
+  background-color: #004e22;
+  margin-top: -50px;
+  margin-bottom: -230px;
+}
+
+.section-bestseller .section-bestseller-heading {
+  margin-top: 150px;
+}
+
+.section-bestseller .section-bestseller-heading h2, .section-bestseller .section-bestseller-heading p {
+  color: #ffffff;
+}
+
+.section-bestseller .section-bestseller-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.section-bestseller .section-bestseller-heading p {
+  font-size: 18px;
+}
+
+.section-bestseller-content .section-bestseller-fish .card-fish {
+  min-height: 380px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 30px;
+  background-size: cover;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.section-bestseller-content .section-bestseller-fish .fish-name {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.section-bestseller-content .section-bestseller-fish .fish-button .btn-fish-details {
+  background-color: #ff2600;
+  color: #ffffff;
+  border-radius: 40px;
+}
+
+.section-bestseller-content .section-bestseller-fish .fish-button .btn-fish-details:hover {
+  background-color: #ff4828;
+  color: #ffffff;
+}
+
+.section-testimonial-heading {
+  background: -webkit-gradient(linear, left top, left bottom, from(#dddbdb), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(#dddbdb, rgba(0, 0, 0, 0));
+  padding-top: 50px;
+  min-height: 506px;
+}
+
+.section-testimonial-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+
+.section-testimonial-heading p {
+  font-size: 18px;
+}
+
+.section-testimonial-content {
+  margin-top: -300px;
+  padding-bottom: 50px;
+}
+
+.section-testimonial-content .card-testimonial {
+  padding: 40px 20px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.section-testimonial-content .card-testimonial .testimonial-content {
+  min-height: 380px;
+}
+
+.section-testimonial-content .card-testimonial .testimonial-content .userImg {
+  width: 120px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.section-testimonial-content .card-testimonial h3 {
+  font-size: 22px;
+}
+
+.section-testimonial-content .card-testimonial .testimonial {
+  font-weight: 200;
+  font-size: 26px;
+  color: #6e6e6e;
+  min-height: 160px;
+}
+
+.section-testimonial-content .card-testimonial .which-fish {
+  font-weight: normal;
+  font-size: 22px;
+  color: #6e6e6e;
+}
+
+.section-testimonial-content .card-testimonial hr {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.section-testimonial-content .btn-choose-fish {
+  background-color: #ff2600;
+  color: #ffffff;
+  border-radius: 40px;
+}
+
+.section-testimonial-content .btn-choose-fish:hover {
+  background-color: #ff401e;
+  color: #ffffff;
+}
+
+.section-testimonial-content .btn-need-help {
+  background-color: #f2f2f2;
+  color: #c3c3c3;
+  border-radius: 40px;
+}
+
+.section-testimonial-content .btn-need-help:hover {
+  background-color: #ffffff;
+  color: #c3c3c3;
+}
+
+.section-footer a {
+  color: #004e22;
 }
 /*# sourceMappingURL=main.css.map */
