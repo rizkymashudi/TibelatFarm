@@ -232,4 +232,27 @@ header .btn-get-started:hover {
 .section-footer a {
   color: #004e22;
 }
+
+/* section details header */
+.section-details-header {
+  min-height: 310px;
+  background: #e4e6e8;
+  margin-top: -68px;
+}
+
+.section-details-content {
+  .breadcrumb{
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  .breadcrumb-item{
+    &.active{
+      font-weight: bold;
+      color: #008037;
+    }
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
