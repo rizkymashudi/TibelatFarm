@@ -240,19 +240,14 @@ header .btn-get-started:hover {
   margin-top: -68px;
 }
 
-.section-details-content {
-  .breadcrumb{
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 30px;
-  }
-
-  .breadcrumb-item{
-    &.active{
-      font-weight: bold;
-      color: #008037;
-    }
-  }
+.section-details-content .breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 30px;
 }
 
+.section-details-content .breadcrumb-item.active {
+  font-weight: bold;
+  color: #008037;
+}
 /*# sourceMappingURL=main.css.map */
