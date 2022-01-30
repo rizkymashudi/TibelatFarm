@@ -42,6 +42,8 @@ body{
 .btn-login{
     background-color: #008037;
     color: #ffffff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 
     &:hover{
         background-color: #00a547;
@@ -250,9 +252,17 @@ header{
 
 //FOOTER
 .section-footer{
+    background-color: #ffffff;
+
     a{
         color: #004e22;
     }
+}
+
+.logo-footer{
+    width: 200px;
+    height: 60px;
+    object-fit: cover;
 }
 
 
@@ -262,7 +272,7 @@ header{
     min-height: 310px;
     background: #e4e6e8;
     margin-top: -68px;
-  }
+}
   
   .section-details-content {
     margin-top: -210px;
@@ -374,3 +384,23 @@ header{
     }
 
   }
+
+// Section etalase
+.btn-filter{
+    background-color: #ffffff;
+    border-color: #004e22;
+    color: #004e22;
+    border-radius: 20px;
+    width: 80px;
+    height: 30px;
+
+    &:hover{
+        background-color: #ff2600;
+        color: #ffffff;
+    }
+
+    &.active{
+        background-color: #ff2600;
+        color: #ffffff;
+    }
+}

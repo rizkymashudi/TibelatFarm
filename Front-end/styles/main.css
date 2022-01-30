@@ -34,6 +34,8 @@ body {
 .btn-login {
   background-color: #008037;
   color: #ffffff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .btn-login:hover {
@@ -229,8 +231,19 @@ header .btn-get-started:hover {
   color: #c3c3c3;
 }
 
+.section-footer {
+  background-color: #ffffff;
+}
+
 .section-footer a {
   color: #004e22;
+}
+
+.logo-footer {
+  width: 200px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* section details header */
@@ -345,5 +358,24 @@ header .btn-get-started:hover {
 .section-details-content .btn-add-tocart:hover {
   background-color: #fc5f43;
   color: #fff;
+}
+
+.btn-filter {
+  background-color: #ffffff;
+  border-color: #004e22;
+  color: #004e22;
+  border-radius: 20px;
+  width: 80px;
+  height: 30px;
+}
+
+.btn-filter:hover {
+  background-color: #ff2600;
+  color: #ffffff;
+}
+
+.btn-filter.active {
+  background-color: #ff2600;
+  color: #ffffff;
 }
 /*# sourceMappingURL=main.css.map */

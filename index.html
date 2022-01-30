@@ -18,7 +18,7 @@
     <!-- NAVBAR -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <a href="#" class="navbar-brand">
+            <a href="#home" class="navbar-brand">
                 <img src="Front-end/images/logo.png" alt="logo">
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
@@ -28,15 +28,18 @@
             <div class="collapse navbar-collapse" id="navb">
                 <ul class="navbar-nav ml-auto mr-3">
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link active">Home</a>
+                        <a href="#home" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link">Best seller</a>
+                        <a href="#bestseller" class="nav-link">Best seller</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="#" class="nav-link">Testimonial</a>
+                        <a href="#testimonialContent" class="nav-link">Testimonial</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item mx-md-2">
+                        <a href="katalog.html" class="nav-link">Etalase</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Katalog ikan</a>
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item">Link</a>
@@ -44,7 +47,7 @@
                             <a href="#" class="dropdown-item">Link</a>
                             <a href="#" class="dropdown-item">Link</a>
                         </div> 
-                    </li>
+                    </li> -->
                     <li class="nav-item mx-md-2">
                         <a href="" class="nav-link cart"><i class="fas fa-shopping-cart"></i></a>
                     </li>
@@ -68,7 +71,7 @@
     </div>
 
     <!-- HEADER -->
-    <header class="text-center">
+    <header class="text-center" id="home">
         <h1>
             Solusi Ikan hias dan
             <br> 
@@ -123,7 +126,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./Front-end/images/cupang.jpg');">
                             <div class="fish-name">IKAN CUPANG</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="details.html" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -226,34 +229,29 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="section-footer mt-5 mb-4 border-top border-secondary">
+    <footer class="section-footer mt-5 mb-4 border-top">
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-12 col-lg-3">
-                            <h5>Feature</h5>
                             <ui class="list-unstyled">
-                                <li><a href="#"></a>Review</li>
-                                <li><a href="#"></a>Tips</li>
-                                <li><a href="#"></a>Ensiklopedia ikan</li>
+                                <img src="Front-end/images/logo.png" alt="logo" class="logo-footer">
+                            </ui>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <h5>Tentang kami</h5>
+                            <ui class="list-unstyled">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                             </ui>
                         </div>
                         <div class="col-12 col-lg-3">
                             <h5>Sosial media</h5>
                             <ui class="list-unstyled">
                                 <li><a href="#"></a>Facebook</li>
-                                <li><a href="#"></a>Instagram</li>
                                 <li><a href="#"></a>Tiktok</li>
-                            </ui>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <h5>Tentang Kami</h5>
-                            <ui class="list-unstyled">
-                                <li><a href="#"></a>Perusahaan</li>
-                                <li><a href="#"></a>Tim</li>
-                                <li><a href="#"></a>Produk</li>
-                                <li><a href="#"></a>Jasa</li>
+                                <li><a href="#"></a>Instagram</li>
+                                <li><a href="#"></a>Youtube</li>
                             </ui>
                         </div>
                         <div class="col-12 col-lg-3">
@@ -269,8 +267,8 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row border-top justify-content-center align-items-center pt-4">
+        <div class="container-fluid border-dark">
+            <div class="row border-top justify-content-center align-items-center p-4">
                 <div class="col-auto text-gray-500 font-weight-light">
                     2021 Copyright Tibelat farm. All rights reserved. Made in Batam
                 </div>
