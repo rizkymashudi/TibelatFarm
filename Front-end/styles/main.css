@@ -274,6 +274,12 @@ header .btn-get-started:hover {
   color: #b1b1b1;
 }
 
+.section-details-content .card-right {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+}
+
 .section-details-content .features {
   margin-top: 20px;
 }
@@ -315,5 +321,29 @@ header .btn-get-started:hover {
   border: 4px solid #1abc9c;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.section-details-content .customers .customer-img {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.section-details-content .join-container {
+  margin-top: -16px;
+}
+
+.section-details-content .btn-add-tocart {
+  background-color: #ff2600;
+  color: #fff;
+  border-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.section-details-content .btn-add-tocart:hover {
+  background-color: #fc5f43;
+  color: #fff;
 }
 /*# sourceMappingURL=main.css.map */
