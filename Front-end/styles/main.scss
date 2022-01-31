@@ -7,6 +7,8 @@ body{
 //NAVBAR
 .navbar{
     border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     height: 75px;
 }
 .navbar-brand {
@@ -44,6 +46,7 @@ body{
     color: #ffffff;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
 
     &:hover{
         background-color: #00a547;
@@ -370,16 +373,28 @@ header{
         margin-top: -16px;
     }
 
-    .btn-add-tocart{
+    .btn-buy{
         background-color: #ff2600;
         color: #fff;
         border-radius: 0;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
+        font-weight: bold;
 
         &:hover{
             background-color: #fc5f43;
             color: #fff;
+        }
+    }
+
+    .btn-add-cart{
+        border-color: #ff2600;
+        color: #ff2600;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: #ff401e;
+            color: #ffffff;
         }
     }
 
@@ -404,3 +419,39 @@ header{
         color: #ffffff;
     }
 }
+
+// Section Checkout
+
+input[type="number"]{
+    -moz-appearance: textfield;
+    text-align: center;
+    border: none;
+    width: 50px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.decrement{
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+    color: #fff;
+    background-color: #008037;
+    border: none;
+    cursor: pointer;
+}
+
+.increment{
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+    color: #fff;
+    background-color: #008037;
+    border: none;
+    cursor: pointer;
+}
+

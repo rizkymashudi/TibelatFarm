@@ -20,47 +20,18 @@
     <!-- NAVBAR -->
     <div class="container">
         <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <a href="#home" class="navbar-brand">
-                <img src="Front-end/images/logo.png" alt="logo">
-            </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navb">
-                <ul class="navbar-nav ml-auto mr-3">
-                    <li class="nav-item mx-md-2">
-                        <a href="index.html" class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item mx-md-2">
-                        <a href="index.html" class="nav-link">Best seller</a>
-                    </li>
-                    <li class="nav-item mx-md-2">
-                        <a href="index.html" class="nav-link">Testimonial</a>
-                    </li>
-                    <li class="nav-item mx-md-2">
-                        <a href="katalog.html" class="nav-link">Etalase</a>
-                    </li>
-               
-                    <li class="nav-item mx-md-2">
-                        <a href="" class="nav-link cart"><i class="fas fa-shopping-cart"></i></a>
-                    </li>
-                </ul>
-
-                <!-- MOBILE BUTTON -->
-                <form class="form-inline d-sm-block d-md-none">
-                    <button class="btn btn-login my-2 my-sm-0 px-4">
-                        Login
-                    </button>
-                </form>
-
-                <!-- DESKTOP BUTTON -->
-                <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-                    <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
-                        Login
-                    </button>
-                </form>
+            <div class="navbar-nav ml-auto mr-auto mr-sm-auto mr-lg-0 mr-md-auto">
+                <a href="index.html" class="navbar-brand">
+                    <img src="Front-end/images/logo.png" alt="">
+                </a>
             </div>
+            <ul class="navbar-nav mr-auto d-none d-lg-block">
+                <li>
+                    <span class="text-muted">
+                        | &nbsp; your one stop fish solution
+                    </span>
+                </li>
+            </ul>
         </nav>
     </div>
 
@@ -74,10 +45,10 @@
                        <nav>
                            <ol class="breadcrumb">
                                <li class="breadcrumb-item">
-                                   Etalase
+                                   Keranjang
                                </li>
                                <li class="breadcrumb-item active">
-                                    Detail Ikan
+                                    Checkout
                                </li>
                            </ol>
                        </nav>
@@ -86,60 +57,65 @@
                <div class="row">
                    <div class="col-lg-8 pl-lg-0">
                        <div class="card card-details">
-                            <h1>Ikan Cupang</h1>
-                            <p>Beta</p>
-                            <div class="gallery">
-                                <div class="xzoom-container">
-                                    <img src="Front-end/images/cupang2.jpg" class="xzoom" id="xzoom-default" xoriginal="Front-end/images/cupang2.jpg" width="660" height="350">
-                                </div>
-                                <div class="xzoom-thumbs">
-                                    <a href="Front-end/images/cupang2.jpg">
-                                        <img src="Front-end/images/cupang2.jpg" class="xzoom-gallery" width="128" xpreview="Front-end/images/cupang2.jpg">
-                                    </a>
-                                    <a href="Front-end/images/cupang2.jpg">
-                                        <img src="Front-end/images/cupang2.jpg" class="xzoom-gallery" width="128" xpreview="Front-end/images/cupang2.jpg">
-                                    </a>
-                                    <a href="Front-end/images/cupang2.jpg">
-                                        <img src="Front-end/images/cupang2.jpg" class="xzoom-gallery" width="128" xpreview="Front-end/images/cupang2.jpg">
-                                    </a>
-                                    <a href="Front-end/images/cupang2.jpg">
-                                        <img src="Front-end/images/cupang2.jpg" class="xzoom-gallery" width="128" xpreview="Front-end/images/cupang2.jpg">
-                                    </a>
-                                    <a href="Front-end/images/cupang2.jpg">
-                                        <img src="Front-end/images/cupang2.jpg" class="xzoom-gallery" width="128" xpreview="Front-end/images/cupang2.jpg">
-                                    </a>
-                                </div>
-                            </div>
-                            <h2>Tentang Ikan cupang</h2>
-                            <p>Cupang, ikan laga, atau ikan adu siam adalah ikan air tawar yang habitat asalnya adalah beberapa negara di Asia Tenggara, antara lain Indonesia, Thailand, Malaysia, Brunei Darussalam, Singapura, Vietnam, dan Indonesia. Ikan cupang adalah salah satu ikan yang kuat bertahan hidup dalam waktu lama sehingga apabila ikan tersebut ditempatkan di wadah dengan volume air sedikit dan tanpa adanya alat sirkulasi udara (aerator), ikan ini masih dapat bertahan hidup.</p>
-                            <div class="features row">
-                                <div class="col-md-4">
-                                    <img src="Front-end/images/ic_event.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 border-left">
-                                    <img src="Front-end/images/ic_foods.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 border-left">
-                                    <img src="Front-end/images/ic_language.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
+                            <h1>Checkout</h1>
+                            <div class="attandee">
+                                <table class="table table-responsive-sm text-center">
+                                    <thead>
+                                        <tr>
+                                            <td>Produk</td>
+                                            <td>Nama</td>
+                                            <td>Harga</td>
+                                            <td>Kuantitas</td>
+                                            <td>Total</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="Front-end/images/cupang2.jpg" height="60">
+                                            </td>
+                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">
+                                                <button class="decrement" id="decrement" onclick="stepper(this)"> - </button>
+                                                <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
+                                                <button class="increment" id="increment" onclick="stepper(this)"> + </button>
+                                            </td>
+                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">
+                                                <a href="#">
+                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="Front-end/images/salmon.jpg" height="60">
+                                            </td>
+                                            <td class="align-middle">Salmon</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">
+                                                <button class="decrement" id="decrement"> - </button>
+                                                <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
+                                                <button class="increment" id="increment"> + </button>
+                                            </td>
+                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">
+                                                <a href="#">
+                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                        </div>
                    </div>
+
                    <div class="col-lg-4">
                        <div class="card card-details card-right">
-                           <h2>Akun</h2>
+                           <h2>Informasi checkout</h2>
                            <div class="customers my-2">
                                 <img src="Front-end/images/customer1.jpg" class="customer-img rounded-circle mr-1">
                            </div>
@@ -249,6 +225,22 @@
             })
             console('asd')
         })
+
+        //input stepper
+        const myInput = document.getElementById("myInput");
+        function stepper(btn){
+            let id = btn.getAttribute("id")
+            let min = myInput.getAttribute("min")
+            let max = myInput.getAttribute("max")
+            let step = myInput.getAttribute("step")
+            let val = myInput.getAttribute("value")
+            let calcStep = (id == "increment") ? (step*1) : (step * -1);
+            let newVal = parseInt(val) + calcStep;
+
+            if(newVal >= min && newVal <= max){
+                myInput.setAttribute("value", newVal)
+            }
+        }
     </script>
 
 </body>
