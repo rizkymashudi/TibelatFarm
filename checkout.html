@@ -158,7 +158,7 @@
                             </div>
                         <hr>
                         <h2>Instruksi pembayaran</h2>
-                        <p class="payment-instructions">
+                        <p class="payment-instructions" id="payment-instructions">
                             Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda
                         </p>
                         <div class="bank" id="transferBank">
@@ -188,7 +188,7 @@
                            </a>
                        </div>
                        <div class="text-center mt-3">
-                           <a href="#" class="text-muted">
+                           <a href="katalog.html" class="text-muted">
                                Batalkan pembelian
                            </a>
                        </div>
@@ -291,10 +291,12 @@
                 document.getElementById("inputAlamat").style.display = "none"
                 document.getElementById("transferBank").style.display = "block"
                 document.querySelector("#btn-buy").textContent = " Saya sudah melakukan pembayaran transfer"
+                document.querySelector("#payment-instructions").textContent = "Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda"
             } else {
                 document.getElementById("transferBank").style.display = "none"
                 document.getElementById("inputAlamat").style.display = "block"
                 document.querySelector("#btn-buy").textContent = "Lakukan pembelian dengan COD"
+                document.querySelector("#payment-instructions").textContent = "Harap masukan alamat pengiriman dengan benar sebelum melakukan pembelian"
             }
 
             return
