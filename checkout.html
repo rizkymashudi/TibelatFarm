@@ -64,8 +64,8 @@
                                         <tr>
                                             <td>Produk</td>
                                             <td>Nama</td>
-                                            <td>Harga</td>
                                             <td>Kuantitas</td>
+                                            <td>Harga</td>
                                             <td>Total</td>
                                             <td></td>
                                         </tr>
@@ -76,13 +76,13 @@
                                                 <img src="Front-end/images/cupang2.jpg" height="60">
                                             </td>
                                             <td class="align-middle">Cupang</td>
-                                            <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <button class="decrement" id="decrement" onclick="stepper(this)"> - </button>
                                                 <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
                                                 <button class="increment" id="increment" onclick="stepper(this)"> + </button>
                                             </td>
-                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <a href="#">
                                                     <img src="Front-end/images/ic_remove.png" alt="">
@@ -94,17 +94,41 @@
                                                 <img src="Front-end/images/salmon.jpg" height="60">
                                             </td>
                                             <td class="align-middle">Salmon</td>
-                                            <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <button class="decrement" id="decrement"> - </button>
                                                 <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
                                                 <button class="increment" id="increment"> + </button>
                                             </td>
-                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <a href="#">
                                                     <img src="Front-end/images/ic_remove.png" alt="">
                                                 </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="sub-total">
+                                <table class="table table-responsive-sm text-center">
+                                    <tbody>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%">Rp. 10.000</th>
+                                            <td width="20%" class="text-right">
+                                               Sub total: 
+                                            </td>
+                                        </tr>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%">Rp. 10.000</th>
+                                            <td width="20%" class="text-right">
+                                               Ongkir: 
+                                            </td>
+                                        </tr>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%" style="font-weight: bold; font-size: large;">Rp. 10.000</th>
+                                            <td width="20%" class="text-right" style="font-weight: bold; font-size: large;">
+                                               Total: 
                                             </td>
                                         </tr>
                                     </tbody>
@@ -115,40 +139,59 @@
 
                    <div class="col-lg-4">
                        <div class="card card-details card-right">
-                           <h2>Informasi checkout</h2>
-                           <div class="customers my-2">
-                                <img src="Front-end/images/customer1.jpg" class="customer-img rounded-circle mr-1">
-                           </div>
+                           <h2>Informasi Pembayaran</h2>
                            <hr>
-                           <h2>Informasi produk</h2>
-                           <table class="product-informations">
-                               <tr>
-                                   <th width="50%">Harga</th>
-                                   <td width="50%" class="text-right">
-                                       RP. 10.000
-                                   </td>
-                               </tr>
-                               <tr>
-                                    <th width="50%">Harga</th>
-                                    <td width="50%" class="text-right">
-                                        RP. 10.000
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th width="50%">Harga</th>
-                                    <td width="50%" class="text-right">
-                                        RP. 10.000
-                                    </td>
-                                </tr>
-                           </table>
+                           <h7>Metode pembayaran</h7>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked onclick="radioClicked(0)">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <i class="fas fa-credit-card"></i>
+                                  Transfer banking
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="radioClicked(1)">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <i class="far fa-money-bill-alt"></i>
+                                  Cash on delivery (COD)
+                                </label>
+                            </div>
+                        <hr>
+                        <h2>Instruksi pembayaran</h2>
+                        <p class="payment-instructions">
+                            Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda
+                        </p>
+                        <div class="bank" id="transferBank">
+                            <div class="bank-item pb-3">
+                                <img src="Front-end/images/bca.png" alt="" class="bank-image">
+                                <div class="description">
+                                    <h3>PT Tibelat farm Indonesia</h3>
+                                    <p>
+                                        0888 3234 4344
+                                        <br>
+                                        Bank Central Asia
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="" id="inputAlamat" style="display: none;">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Alamat pengiriman</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                        </form>
+
                        </div>
                        <div class="join-container">
-                           <a href="#" class="btn btn-block btn-add-tocart mt-3 py-2">
-                            <i class="fas fa-shopping-cart"></i>
-                               Tambahkan ke keranjang
+                           <a href="#" class="btn btn-block btn-buy mt-3 py-2" id="btn-buy">
+                               Saya sudah melakukan pembayaran transfer
                            </a>
                        </div>
-
+                       <div class="text-center mt-3">
+                           <a href="#" class="text-muted">
+                               Batalkan pembelian
+                           </a>
+                       </div>
                    </div>
                </div>
            </div>
@@ -241,6 +284,22 @@
                 myInput.setAttribute("value", newVal)
             }
         }
+
+        //Payment method
+        function radioClicked(x){
+            if (x == 0) {
+                document.getElementById("inputAlamat").style.display = "none"
+                document.getElementById("transferBank").style.display = "block"
+                document.querySelector("#btn-buy").textContent = " Saya sudah melakukan pembayaran transfer"
+            } else {
+                document.getElementById("transferBank").style.display = "none"
+                document.getElementById("inputAlamat").style.display = "block"
+                document.querySelector("#btn-buy").textContent = "Lakukan pembelian dengan COD"
+            }
+
+            return
+        }
+        
     </script>
 
 </body>

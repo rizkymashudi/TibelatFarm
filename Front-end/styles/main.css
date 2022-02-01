@@ -290,6 +290,54 @@ header .btn-get-started:hover {
   color: #b1b1b1;
 }
 
+.section-details-content .card-details h3 {
+  font-weight: 600;
+  font-size: 14px;
+  color: #00a547;
+}
+
+.section-details-content .card-details .product-informations th {
+  font-weight: 300;
+  font-size: 18px;
+  color: #00a547;
+}
+
+.section-details-content .card-details .payment-instructions {
+  font-weight: 300;
+  font-size: 14px;
+  color: #b1b1b1;
+}
+
+.section-details-content .card-details .bank .bank-item h3 {
+  font-size: 18px;
+  color: #00a547;
+  margin-bottom: 0;
+}
+
+.section-details-content .card-details .bank .bank-item p {
+  margin-bottom: 0;
+}
+
+.section-details-content .card-details .bank .bank-item .description {
+  margin-left: 10px;
+  overflow: hidden;
+  float: left;
+}
+
+.section-details-content .card-details .bank .bank-item .description p {
+  font-weight: normal;
+  font-size: 16px;
+  color: #00a547;
+}
+
+.section-details-content .card-details .bank .bank-image {
+  width: 50px;
+  height: 45px;
+  float: left;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+
 .section-details-content .card-right {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;

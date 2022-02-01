@@ -310,6 +310,59 @@ header{
             font-size: 18px;
             color: #b1b1b1;
         }
+
+        h3{
+            font-weight: 600;
+            font-size: 14px;
+            color: #00a547;
+        }
+
+        .product-informations{
+            th{
+                font-weight: 300;
+                font-size: 18px;
+                color: #00a547;
+            }
+        }
+
+        .payment-instructions{
+            font-weight: 300;
+            font-size: 14px;
+            color: #b1b1b1;
+        }
+
+        .bank{
+            .bank-item{
+                h3{
+                    font-size: 18px;
+                    color: #00a547;
+                    margin-bottom: 0;
+                }
+
+                p{
+                    margin-bottom: 0;
+                }
+
+                .description{
+                    margin-left: 10px;
+                    overflow: hidden;
+                    float: left;
+
+                    p{
+                        font-weight: normal;
+                        font-size: 16px;
+                        color: #00a547;
+                    }
+                }
+            }
+
+            .bank-image{
+                width: 50px;
+                height: 45px;
+                float: left;
+                object-fit: scale-down;
+            }
+        }
     }
 
     .card-right{
@@ -454,4 +507,6 @@ input::-webkit-inner-spin-button{
     border: none;
     cursor: pointer;
 }
+
+
 
