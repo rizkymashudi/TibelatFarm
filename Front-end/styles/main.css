@@ -1,5 +1,5 @@
 body {
-  background-color: #dddbdb;
+  background-color: #e6e6e6;
   font-family: 'Assistant', sans-serif;
   color: #008037;
 }
@@ -473,5 +473,32 @@ input::-webkit-inner-spin-button {
   background-color: #008037;
   border: none;
   cursor: pointer;
+}
+
+.section-success {
+  height: 90vh;
+}
+
+.section-success h1 {
+  font-weight: 600;
+  font-size: 26px;
+  color: #008037;
+}
+
+.section-success p {
+  font-weight: 300;
+  font-size: 18px;
+  color: #b1b1b1;
+}
+
+.section-success .btn-home-page {
+  border-radius: 5px;
+  background-color: #008037;
+  color: #fff;
+}
+
+.section-success .btn-home-page:hover {
+  background-color: #00a547;
+  color: #fff;
 }
 /*# sourceMappingURL=main.css.map */

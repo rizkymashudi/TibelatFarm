@@ -1,5 +1,5 @@
 body{
-    background-color: #dddbdb;
+    background-color: #e6e6e6;
     font-family: 'Assistant', sans-serif;
     color: #008037;
 }
@@ -510,3 +510,29 @@ input::-webkit-inner-spin-button{
 
 
 
+.section-success{
+    height: 90vh;
+
+    h1{
+        font-weight: 600;
+        font-size: 26px;
+        color: #008037;
+    }
+
+    p{
+        font-weight: 300;
+        font-size: 18px;
+        color: #b1b1b1;
+    }
+
+    .btn-home-page{
+        border-radius: 5px;
+        background-color: #008037;
+        color: #fff;
+
+        &:hover{
+            background-color: #00a547;
+            color: #fff;
+        }
+    }
+}
