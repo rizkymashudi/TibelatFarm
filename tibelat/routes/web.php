@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route FrontEnd
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/etalase', 'EtalaseController@index')->name('etalase');
 Route::get('/detail', 'DetailController@index')->name('detail');
@@ -20,7 +21,7 @@ Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 Route::get('/checkout/success', 'CheckoutController@success')->name('checkout-success');
 
 
-
+// Route BackEnd
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
