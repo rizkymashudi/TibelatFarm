@@ -34,7 +34,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/cupang.jpg');">
                             <div class="fish-name">IKAN CUPANG</div>
                             <div class="fish-button mt-auto">
-                                <a href="details.html" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/mas.jpg');">
                             <div class="fish-name">IKAN MAS</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)),url('./FrontEnd/images/karang.jpg');">
                             <div class="fish-name">IKAN KARANG</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
                             <div class="fish-name">IKAN SALMON</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
                             <div class="fish-name">IKAN SALMON</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
                             <div class="fish-name">IKAN SALMON</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
                             <div class="fish-name">IKAN SALMON</div>
                             <div class="fish-button mt-auto">
-                                <a href="#" class="btn btn-fish-details px-4">View details</a>
+                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
                             </div>
                         </div>
                     </div>
