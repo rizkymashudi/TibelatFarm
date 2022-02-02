@@ -10,7 +10,7 @@
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br> Tempora rerum sunt, repellat officia amet repudiandae eveniet perspiciatis numquam voluptatum minus dolores perferendis natus sapiente dicta soluta illum similique ut. Velit.
             </p>
-            <a href="index.html" class="btn btn-home-page mt-3 px5">Homepage</a>
+            <a href="{{ route('/') }}" class="btn btn-home-page mt-3 px5">Homepage</a>
         </div>
     </div>
 @endsection

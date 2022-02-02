@@ -156,7 +156,7 @@
                             </a>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="katalog.html" class="text-muted">
+                            <a href="{{ route('home') }}" class="text-muted">
                                 Batalkan pembelian
                             </a>
                         </div>

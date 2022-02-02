@@ -16,7 +16,7 @@
             Ikan cantik dan segar berkualitas <br> 
             untuk kebutuhan konsumsi anda atau sekedar penghias rumah
         </p>
-        <a href="#" class="btn btn-get-started px-4 mt-4">Pilih ikanmu sekarang!</a>
+        <a href="{{ route('etalase') }}" class="btn btn-get-started px-4 mt-4">Pilih ikanmu sekarang!</a>
 
     </header>
 
@@ -156,7 +156,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <a href="#" class="btn btn-need-help px-4 mt-4 mx1">Butuh bantuan</a>
-                        <a href="#" class="btn btn-choose-fish px-4 mt-4 mx1">Mulai pilih ikanmu!</a>
+                        <a href="{{ route('etalase') }}" class="btn btn-choose-fish px-4 mt-4 mx1">Mulai pilih ikanmu!</a>
                     </div>
                 </div>
             </div>
