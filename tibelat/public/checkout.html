@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="Front-end/libraries/bootstrap/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="Front-end/libraries/xzoom/xzoom.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Front-end/styles/main.css">
+    
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="container">
+        <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+            <div class="navbar-nav ml-auto mr-auto mr-sm-auto mr-lg-0 mr-md-auto">
+                <a href="index.html" class="navbar-brand">
+                    <img src="Front-end/images/logo.png" alt="">
+                </a>
+            </div>
+            <ul class="navbar-nav mr-auto d-none d-lg-block">
+                <li>
+                    <span class="text-muted">
+                        | &nbsp; your one stop fish solution
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+   <!-- MAIN SECTION -->
+   <main>
+       <section class="section-details-header"></section>
+       <section class="section-details-content">
+           <div class="container">
+               <div class="row">
+                   <div class="col p-0">
+                       <nav>
+                           <ol class="breadcrumb">
+                               <li class="breadcrumb-item">
+                                   Keranjang
+                               </li>
+                               <li class="breadcrumb-item active">
+                                    Checkout
+                               </li>
+                           </ol>
+                       </nav>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-lg-8 pl-lg-0">
+                       <div class="card card-details">
+                            <h1>Checkout</h1>
+                            <div class="attandee">
+                                <table class="table table-responsive-sm text-center">
+                                    <thead>
+                                        <tr>
+                                            <td>Produk</td>
+                                            <td>Nama</td>
+                                            <td>Kuantitas</td>
+                                            <td>Harga</td>
+                                            <td>Total</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="Front-end/images/cupang2.jpg" height="60">
+                                            </td>
+                                            <td class="align-middle">Cupang</td>
+                                            <td class="align-middle">
+                                                <button class="decrement" id="decrement" onclick="stepper(this)"> - </button>
+                                                <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
+                                                <button class="increment" id="increment" onclick="stepper(this)"> + </button>
+                                            </td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">
+                                                <a href="#">
+                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="Front-end/images/salmon.jpg" height="60">
+                                            </td>
+                                            <td class="align-middle">Salmon</td>
+                                            <td class="align-middle">
+                                                <button class="decrement" id="decrement"> - </button>
+                                                <input class="numberStyle" id="myInput" type="number" min="1" max="99" step="1" value="1" readonly>
+                                                <button class="increment" id="increment"> + </button>
+                                            </td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">Rp. 10.000</td>
+                                            <td class="align-middle">
+                                                <a href="#">
+                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="sub-total">
+                                <table class="table table-responsive-sm text-center">
+                                    <tbody>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%">Rp. 10.000</th>
+                                            <td width="20%" class="text-right">
+                                               Sub total: 
+                                            </td>
+                                        </tr>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%">Rp. 10.000</th>
+                                            <td width="20%" class="text-right">
+                                               Ongkir: 
+                                            </td>
+                                        </tr>
+                                        <tr class="d-flex flex-row-reverse">
+                                            <th width="30%" style="font-weight: bold; font-size: large;">Rp. 10.000</th>
+                                            <td width="20%" class="text-right" style="font-weight: bold; font-size: large;">
+                                               Total: 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                       </div>
+                   </div>
+
+                   <div class="col-lg-4">
+                       <div class="card card-details card-right">
+                           <h2>Informasi Pembayaran</h2>
+                           <hr>
+                           <h7>Metode pembayaran</h7>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked onclick="radioClicked(0)">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <i class="fas fa-credit-card"></i>
+                                  Transfer banking
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="radioClicked(1)">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <i class="far fa-money-bill-alt"></i>
+                                  Cash on delivery (COD)
+                                </label>
+                            </div>
+                        <hr>
+                        <h2>Instruksi pembayaran</h2>
+                        <p class="payment-instructions" id="payment-instructions">
+                            Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda
+                        </p>
+                        <div class="bank" id="transferBank">
+                            <div class="bank-item pb-3">
+                                <img src="Front-end/images/bca.png" alt="" class="bank-image">
+                                <div class="description">
+                                    <h3>PT Tibelat farm Indonesia</h3>
+                                    <p>
+                                        0888 3234 4344
+                                        <br>
+                                        Bank Central Asia
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="" id="inputAlamat" style="display: none;">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Alamat pengiriman</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                        </form>
+
+                       </div>
+                       <div class="join-container">
+                           <a href="success.html" class="btn btn-block btn-buy mt-3 py-2" id="btn-buy">
+                               Saya sudah melakukan pembayaran transfer
+                           </a>
+                       </div>
+                       <div class="text-center mt-3">
+                           <a href="katalog.html" class="text-muted">
+                               Batalkan pembelian
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section>
+   </main>
+   
+
+    <!-- FOOTER -->
+    <footer class="section-footer mt-5 mb-4 border-top">
+        <div class="container pt-5 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-3">
+                            <ui class="list-unstyled">
+                                <img src="Front-end/images/logo.png" alt="logo" class="logo-footer">
+                            </ui>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <h5>Tentang kami</h5>
+                            <ui class="list-unstyled">
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </ui>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <h5>Sosial media</h5>
+                            <ui class="list-unstyled">
+                                <li><a href="#"></a>Facebook</li>
+                                <li><a href="#"></a>Tiktok</li>
+                                <li><a href="#"></a>Instagram</li>
+                                <li><a href="#"></a>Youtube</li>
+                            </ui>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <h5>Lokasi</h5>
+                            <ui class="list-unstyled">
+                                <li><a href="#"></a>Batam</li>
+                                <li><a href="#"></a>Indonesia</li>
+                                <li><a href="#"></a>0888-XXXX-XXXX</li>
+                                <li><a href="#"></a>CustomerService@Tibelatfarm.com</li>
+                            </ui>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row border-top justify-content-center align-items-center pt-4 pb-4">
+                <div class="col-auto text-gray-500 font-weight-light">
+                    2021 Copyright Tibelat farm. All rights reserved. Made in Batam
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="Front-end/libraries/xzoom/xzoom.min.js"></script>
+    <script src="Front-end/libraries/jquery/jquery-3.6.0.min.js"></script>
+    <script src="Front-end/libraries/bootstrap/js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="Front-end/libraries/retina/retina.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    
+
+    <script>
+    
+        //input stepper
+        const myInput = document.getElementById("myInput");
+        function stepper(btn){
+            let id = btn.getAttribute("id")
+            let min = myInput.getAttribute("min")
+            let max = myInput.getAttribute("max")
+            let step = myInput.getAttribute("step")
+            let val = myInput.getAttribute("value")
+            let calcStep = (id == "increment") ? (step*1) : (step * -1);
+            let newVal = parseInt(val) + calcStep;
+
+            if(newVal >= min && newVal <= max){
+                myInput.setAttribute("value", newVal)
+            }
+        }
+
+        //Payment method
+        function radioClicked(x){
+            if (x == 0) {
+                document.getElementById("inputAlamat").style.display = "none"
+                document.getElementById("transferBank").style.display = "block"
+                document.querySelector("#btn-buy").textContent = " Saya sudah melakukan pembayaran transfer"
+                document.querySelector("#payment-instructions").textContent = "Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda"
+            } else {
+                document.getElementById("transferBank").style.display = "none"
+                document.getElementById("inputAlamat").style.display = "block"
+                document.querySelector("#btn-buy").textContent = "Lakukan pembelian dengan COD"
+                document.querySelector("#payment-instructions").textContent = "Harap masukan alamat pengiriman dengan benar sebelum melakukan pembelian"
+            }
+
+            return
+        }
+        
+    </script>
+
+</body>
+</html>
