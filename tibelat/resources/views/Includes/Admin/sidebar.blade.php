@@ -26,6 +26,7 @@
                 <h6 class="collapse-header">Jenis transaksi:</h6>
                 <a class="collapse-item" href="buttons.html">COD</a>
                 <a class="collapse-item" href="cards.html">Transfer</a>
+                <a class="collapse-item" href="cards.html">Transaksi selesai</a>
             </div>
         </div>
     </li>
