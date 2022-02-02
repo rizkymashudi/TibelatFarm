@@ -1,62 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="Front-end/libraries/bootstrap/css/bootstrap.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="Front-end/libraries/xzoom/xzoom.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Front-end/styles/main.css">
-    
-</head>
-<body>
-    <!-- NAVBAR -->
-    <div class="container">
-        <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-            <div class="navbar-nav ml-auto mr-auto mr-sm-auto mr-lg-0 mr-md-auto">
-                <a href="index.html" class="navbar-brand">
-                    <img src="Front-end/images/logo.png" alt="">
-                </a>
-            </div>
-            <ul class="navbar-nav mr-auto d-none d-lg-block">
-                <li>
-                    <span class="text-muted">
-                        | &nbsp; your one stop fish solution
-                    </span>
-                </li>
-            </ul>
-        </nav>
-    </div>
+@extends('Layouts.checkout')
 
-   <!-- MAIN SECTION -->
-   <main>
-       <section class="section-details-header"></section>
-       <section class="section-details-content">
-           <div class="container">
-               <div class="row">
-                   <div class="col p-0">
-                       <nav>
-                           <ol class="breadcrumb">
-                               <li class="breadcrumb-item">
-                                   Keranjang
-                               </li>
-                               <li class="breadcrumb-item active">
+@section('title', 'checkout')
+
+@section('content')
+    <!-- MAIN SECTION -->
+    <main>
+        <section class="section-details-header"></section>
+        <section class="section-details-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col p-0">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    Keranjang
+                                </li>
+                                <li class="breadcrumb-item active">
                                     Checkout
-                               </li>
-                           </ol>
-                       </nav>
-                   </div>
-               </div>
-               <div class="row">
-                   <div class="col-lg-8 pl-lg-0">
-                       <div class="card card-details">
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 pl-lg-0">
+                        <div class="card card-details">
                             <h1>Checkout</h1>
                             <div class="attandee">
                                 <table class="table table-responsive-sm text-center">
@@ -73,7 +41,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="Front-end/images/cupang2.jpg" height="60">
+                                                <img src="FrontEnd/images/cupang2.jpg" height="60">
                                             </td>
                                             <td class="align-middle">Cupang</td>
                                             <td class="align-middle">
@@ -85,13 +53,13 @@
                                             <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <a href="#">
-                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                    <img src="FrontEnd/images/ic_remove.png" alt="">
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src="Front-end/images/salmon.jpg" height="60">
+                                                <img src="FrontEnd/images/salmon.jpg" height="60">
                                             </td>
                                             <td class="align-middle">Salmon</td>
                                             <td class="align-middle">
@@ -103,7 +71,7 @@
                                             <td class="align-middle">Rp. 10.000</td>
                                             <td class="align-middle">
                                                 <a href="#">
-                                                    <img src="Front-end/images/ic_remove.png" alt="">
+                                                    <img src="FrontEnd/images/ic_remove.png" alt="">
                                                 </a>
                                             </td>
                                         </tr>
@@ -116,44 +84,44 @@
                                         <tr class="d-flex flex-row-reverse">
                                             <th width="30%">Rp. 10.000</th>
                                             <td width="20%" class="text-right">
-                                               Sub total: 
+                                                Sub total: 
                                             </td>
                                         </tr>
                                         <tr class="d-flex flex-row-reverse">
                                             <th width="30%">Rp. 10.000</th>
                                             <td width="20%" class="text-right">
-                                               Ongkir: 
+                                                Ongkir: 
                                             </td>
                                         </tr>
                                         <tr class="d-flex flex-row-reverse">
                                             <th width="30%" style="font-weight: bold; font-size: large;">Rp. 10.000</th>
                                             <td width="20%" class="text-right" style="font-weight: bold; font-size: large;">
-                                               Total: 
+                                                Total: 
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                       </div>
-                   </div>
+                        </div>
+                    </div>
 
-                   <div class="col-lg-4">
-                       <div class="card card-details card-right">
-                           <h2>Informasi Pembayaran</h2>
-                           <hr>
-                           <h7>Metode pembayaran</h7>
+                    <div class="col-lg-4">
+                        <div class="card card-details card-right">
+                            <h2>Informasi Pembayaran</h2>
+                            <hr>
+                            <h7>Metode pembayaran</h7>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked onclick="radioClicked(0)">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     <i class="fas fa-credit-card"></i>
-                                  Transfer banking
+                                Transfer banking
                                 </label>
-                              </div>
-                              <div class="form-check">
+                            </div>
+                            <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="radioClicked(1)">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     <i class="far fa-money-bill-alt"></i>
-                                  Cash on delivery (COD)
+                                Cash on delivery (COD)
                                 </label>
                             </div>
                         <hr>
@@ -163,7 +131,7 @@
                         </p>
                         <div class="bank" id="transferBank">
                             <div class="bank-item pb-3">
-                                <img src="Front-end/images/bca.png" alt="" class="bank-image">
+                                <img src="FrontEnd/images/bca.png" alt="" class="bank-image">
                                 <div class="description">
                                     <h3>PT Tibelat farm Indonesia</h3>
                                     <p>
@@ -178,88 +146,30 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Alamat pengiriman</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                              </div>
+                            </div>
                         </form>
 
-                       </div>
-                       <div class="join-container">
-                           <a href="success.html" class="btn btn-block btn-buy mt-3 py-2" id="btn-buy">
-                               Saya sudah melakukan pembayaran transfer
-                           </a>
-                       </div>
-                       <div class="text-center mt-3">
-                           <a href="katalog.html" class="text-muted">
-                               Batalkan pembelian
-                           </a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
-   </main>
-   
-
-    <!-- FOOTER -->
-    <footer class="section-footer mt-5 mb-4 border-top">
-        <div class="container pt-5 pb-5">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 col-lg-3">
-                            <ui class="list-unstyled">
-                                <img src="Front-end/images/logo.png" alt="logo" class="logo-footer">
-                            </ui>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <h5>Tentang kami</h5>
-                            <ui class="list-unstyled">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            </ui>
+                        <div class="join-container">
+                            <a href="success.html" class="btn btn-block btn-buy mt-3 py-2" id="btn-buy">
+                                Saya sudah melakukan pembayaran transfer
+                            </a>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <h5>Sosial media</h5>
-                            <ui class="list-unstyled">
-                                <li><a href="#"></a>Facebook</li>
-                                <li><a href="#"></a>Tiktok</li>
-                                <li><a href="#"></a>Instagram</li>
-                                <li><a href="#"></a>Youtube</li>
-                            </ui>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <h5>Lokasi</h5>
-                            <ui class="list-unstyled">
-                                <li><a href="#"></a>Batam</li>
-                                <li><a href="#"></a>Indonesia</li>
-                                <li><a href="#"></a>0888-XXXX-XXXX</li>
-                                <li><a href="#"></a>CustomerService@Tibelatfarm.com</li>
-                            </ui>
+                        <div class="text-center mt-3">
+                            <a href="katalog.html" class="text-muted">
+                                Batalkan pembelian
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row border-top justify-content-center align-items-center pt-4 pb-4">
-                <div class="col-auto text-gray-500 font-weight-light">
-                    2021 Copyright Tibelat farm. All rights reserved. Made in Batam
-                </div>
-            </div>
-        </div>
-    </footer>
+        </section>
+    </main>
+@endsection
 
-    
-    <script src="Front-end/libraries/xzoom/xzoom.min.js"></script>
-    <script src="Front-end/libraries/jquery/jquery-3.6.0.min.js"></script>
-    <script src="Front-end/libraries/bootstrap/js/bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="Front-end/libraries/retina/retina.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    
-
+@push('addon-script')
     <script>
-    
+        
         //input stepper
         const myInput = document.getElementById("myInput");
         function stepper(btn){
@@ -294,6 +204,4 @@
         }
         
     </script>
-
-</body>
-</html>
+@endpush

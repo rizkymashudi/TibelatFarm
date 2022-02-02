@@ -11,7 +11,7 @@
 
     <title>Tibelat farm admin</title>
 
-    @include('Includes.style')
+    @include('Includes.Admin.style')
 </head>
 
 <body id="page-top">
@@ -20,7 +20,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('Includes.sidebar')
+        @include('Includes.Admin.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -30,7 +30,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('Includes.navbar')
+                @include('Includes.Admin.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -42,7 +42,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('Includes.footer')
+            @include('Includes.Admin.footer')
             <!-- End of Footer -->
 
         </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    @include('Includes.script')
+    @include('Includes.Admin.script')
 </body>
 
 </html>
