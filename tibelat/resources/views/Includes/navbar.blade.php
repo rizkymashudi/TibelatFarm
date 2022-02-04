@@ -21,6 +21,13 @@
                 <li class="nav-item mx-md-2">
                     <a href="{{ route('etalase') }}" class="nav-link">Etalase</a>
                 </li>
+                <li class="nav-item mx-md-2">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">logout</button>
+                    </form>
+                    
+                </li>
         
                 <li class="nav-item mx-md-2">
                     <a href="{{ route('checkout')}}" class="nav-link cart"><i class="fas fa-shopping-cart"></i></a>
@@ -28,14 +35,14 @@
             </ul>
 
             <!-- MOBILE BUTTON -->
-            <form class="form-inline d-sm-block d-md-none">
+            <form class="form-inline d-sm-block d-md-none" action="{{ route('login') }}">
                 <button class="btn btn-login my-2 my-sm-0 px-4">
                     Login
                 </button>
             </form>
 
             <!-- DESKTOP BUTTON -->
-            <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+            <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ route('login') }}">
                 <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
                     Login
                 </button>
