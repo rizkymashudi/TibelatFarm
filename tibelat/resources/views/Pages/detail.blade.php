@@ -103,10 +103,17 @@
                                     </td>
                                 </tr>
                             </table>
-                            <a href="#" class="btn btn-add-cart mt-4">
-                            <i class="fas fa-shopping-cart"></i>
-                                Tambahkan ke keranjang
-                            </a>
+                            @if(Auth::check())
+                                <a href="#" class="btn btn-add-cart mt-4">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Tambahkan ke keranjang
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-add-cart mt-4 text-muted">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Tambahkan ke keranjang
+                                </a>
+                            @endif
                         </div>
                         <div class="join-container">
                             <a href="checkout.html" class="btn btn-block btn-buy mt-3 py-2">

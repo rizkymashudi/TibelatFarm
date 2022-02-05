@@ -14,3 +14,5 @@
 <!-- Page level custom scripts -->
 <script src="{{ url('BackEnd/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ url('BackEnd/js/demo/chart-pie-demo.js') }}"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

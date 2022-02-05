@@ -25,4 +25,16 @@ body{
   background: #fc593d;
 }
 
-
+form .text p{
+  color: #333;
+  width: 100%;
+  text-align: center;
+ }
+ form .text p a{
+   color: #4070f4;
+   text-decoration: none;
+ }
+ form .text p a:hover{
+   text-decoration: underline;
+ }
+ 

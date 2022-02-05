@@ -8,6 +8,8 @@
     @stack('prepend-style')
     @include('Includes.style')
     @stack('addon-style')
+    
+    @include('sweetalert::alert')
 </head>
 <body>
     <!-- NAVBAR -->
@@ -23,5 +25,6 @@
     @stack('prepend-script')
     @include('Includes.script')
     @stack('addon-script')
+    
 </body>
 </html>

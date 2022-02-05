@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.login')
+@push('addon-style')
+    <link rel="stylesheet" href="{{ url('FrontEnd/styles/registration.css')}} ">
+@endpush
 
 @section('content')
 <div class="container">
@@ -6,7 +9,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -33,7 +35,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-register">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

@@ -16,7 +16,7 @@
             {{-- <h1 class="h3 mb-3 fw-normal">Login</h1> --}}
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="name@example.com">
+                <input type="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="name@example.com">
                 <label for="floatingInput">{{ __('Email Address') }}</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                 @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                <input type="password" id="floatingPassword"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                 <label for="floatingPassword">{{ __('Password') }}</label>
                 @error('password')
                     <span class="invalid-feedback" role="alert">

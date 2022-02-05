@@ -10,7 +10,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header text-center" style="background-color: #fff;">
+                        <img class="mb-4 logo-sign-in" src="FrontEnd/images/logo.png" alt="" width="180" height="80">
+                        <br>
+                        <h4>{{ __('Register') }}</h4>
+                    </div>
     
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -105,6 +109,9 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="text text-center mt-3">
+                                <p>Sudah punya akun? <a href="{{ route('login')}}">Login sekarang</a></p>
+                              </div>
                         </form>
                     </div>
                 </div>

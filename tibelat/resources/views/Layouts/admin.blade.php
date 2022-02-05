@@ -12,10 +12,12 @@
     <title>Tibelat farm admin</title>
 
     @include('Includes.Admin.style')
+    @include('sweetalert::alert')
+
 </head>
 
 <body id="page-top">
-
+    
     <!-- Page Wrapper -->
     <div id="wrapper">
 
