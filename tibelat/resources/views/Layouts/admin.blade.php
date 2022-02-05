@@ -12,7 +12,7 @@
     <title>Tibelat farm admin</title>
 
     @include('Includes.Admin.style')
-    @include('sweetalert::alert')
+    
 
 </head>
 
@@ -20,7 +20,7 @@
     
     <!-- Page Wrapper -->
     <div id="wrapper">
-
+        @include('sweetalert::alert')
         <!-- Sidebar -->
         @include('Includes.Admin.sidebar')
         <!-- End of Sidebar -->

@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CustomerModel extends Model
+class EtalaseModel extends Model
 {
     use HasFactory;
 
-    protected $table = "customers";
+    protected $table = 'items';
 
     protected $fillable = [
-        'username', 'address', 'phone'
+        'items_name', 'slug', 'description', 'stocks', 'price'
     ];
 
     protected $hidden = [];
+
+
 }
