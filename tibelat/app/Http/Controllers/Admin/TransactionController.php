@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\EtalaseModel;
-use App\Http\Requests\Admin\EtalaseRequest;
+use App\Models\TransactionsModel;
+use App\Models\CustomerModel;
+use App\Http\Requests\Admin\TransactionRequest;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class EtalaseController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +19,15 @@ class EtalaseController extends Controller
      */
     public function index()
     {
-        $items = EtalaseModel::all();
+        $items = TransactionsModel::with(['etalase_item', 'customers'])
+                                    ->where('transaction_type', '=', 'COD')
+                                    ->where('transaction_status', '=', 'SHIPPING')
+                                    ->get();
+       
     
-        return view('Pages.admin.etalase.index', ['items' => $items]);
+        return view('Pages.admin.transactionCOD.index', ['items' => $items]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +36,7 @@ class EtalaseController extends Controller
      */
     public function create()
     {
-        return view('Pages.admin.etalase.create');
+        //
     }
 
     /**
@@ -43,7 +49,7 @@ class EtalaseController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->items_name);
-        EtalaseModel::create($data);
+        TransactionsModel::create($data);
 
         Alert::toast('Success', 'Data berhasil ditambahkan');
         return redirect()->route('etalase.index');
@@ -68,9 +74,9 @@ class EtalaseController extends Controller
      */
     public function edit($id)
     {
-        $item = EtalaseModel::findOrFail($id);
+        $item = TransactionsModel::findOrFail($id);
 
-        return view('Pages.admin.etalase.edit', ['item' => $item]);
+        return view('Pages.admin.transactionCOD.edit', ['item' => $item]);
     }
 
     /**
@@ -80,14 +86,13 @@ class EtalaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EtalaseRequest $request, $id)
+    public function update(TransactionRequest $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->items_name);
-        EtalaseModel::findOrFail($id)->update($data);
+        TransactionsModel::findOrFail($id)->update($data);
 
         Alert::toast('Success', 'Data berhasil diubah');
-        return redirect()->route('etalase.index');
+        return redirect()->route('transactionCOD.index');
     }
 
     /**
@@ -98,7 +103,7 @@ class EtalaseController extends Controller
      */
     public function destroy($id)
     {
-        $item = EtalaseModel::findOrFail($id);
+        $item = TransactionsModel::findOrFail($id);
         $item->delete();
 
         Alert::toast('Success', 'Data berhasil dihapus');

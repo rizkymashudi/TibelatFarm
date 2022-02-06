@@ -19,4 +19,10 @@ class EtalaseModel extends Model
     protected $hidden = [];
 
 
+    //Table relation with gallery table
+    public function galleries(){
+        return $this->hasMany(EtalaseGalleryModel::class, 'items_id', 'id');
+    }
+
+
 }

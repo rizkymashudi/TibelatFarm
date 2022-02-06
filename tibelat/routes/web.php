@@ -28,6 +28,10 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::resource('etalase', 'EtalaseController');
+        Route::resource('gallery', 'GalleryEtalaseController');
+        Route::resource('transactionCOD', 'TransactionController');
+        Route::resource('transactionTF', 'TransactionTFController');
+        Route::resource('transactionDone', 'TransactionDoneController');
     });
 Auth::routes(['verify' => true]);
 

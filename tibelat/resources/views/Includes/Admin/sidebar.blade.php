@@ -24,9 +24,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Jenis transaksi:</h6>
-                <a class="collapse-item" href="buttons.html">COD</a>
-                <a class="collapse-item" href="cards.html">Transfer</a>
-                <a class="collapse-item" href="cards.html">Transaksi selesai</a>
+                <a class="collapse-item" href="{{ route('transactionCOD.index') }}">COD</a>
+                <a class="collapse-item" href="{{ route('transactionTF.index') }}">Transfer</a>
+                <a class="collapse-item" href="{{ route('transactionDone.index') }}">Transaksi selesai</a>
             </div>
         </div>
     </li>
@@ -35,6 +35,13 @@
         <a class="nav-link" href="{{ route('etalase.index') }}">
             <i class="fas fa-fw fa-boxes"></i>
             <span>Etalase</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('gallery.index') }}">
+            <i class="fas fa-fw fa-images"></i>
+            <span>Gallery items</span>
         </a>
     </li>
 

@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\EtalaseGalleryModel;
 use App\Models\EtalaseModel;
-use App\Http\Requests\Admin\EtalaseRequest;
+use App\Http\Requests\Admin\GalleryRequest;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class EtalaseController extends Controller
+class GalleryEtalaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,9 @@ class EtalaseController extends Controller
      */
     public function index()
     {
-        $items = EtalaseModel::all();
-    
-        return view('Pages.admin.etalase.index', ['items' => $items]);
+        $galleries = EtalaseGalleryModel::with('Etalase')->get();
+
+        return view('Pages.admin.gallery.index', ['galleries' => $galleries]);
     }
 
     /**
@@ -30,7 +31,9 @@ class EtalaseController extends Controller
      */
     public function create()
     {
-        return view('Pages.admin.etalase.create');
+        $etalaseItems = EtalaseModel::all();
+
+        return view('Pages.admin.gallery.create', ['etalaseItems' => $etalaseItems]);
     }
 
     /**
@@ -39,14 +42,14 @@ class EtalaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EtalaseRequest $request)
+    public function store(galleryRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->items_name);
-        EtalaseModel::create($data);
+        $data['image'] = $request->file('image')->store('assets/gallery', 'public');
+        EtalaseGalleryModel::create($data);
 
         Alert::toast('Success', 'Data berhasil ditambahkan');
-        return redirect()->route('etalase.index');
+        return redirect()->route('gallery.index');
     }
 
     /**
@@ -68,9 +71,10 @@ class EtalaseController extends Controller
      */
     public function edit($id)
     {
-        $item = EtalaseModel::findOrFail($id);
+        $item = EtalaseGalleryModel::findOrFail($id);
+        $etalaseItems = EtalaseModel::all();
 
-        return view('Pages.admin.etalase.edit', ['item' => $item]);
+        return view('Pages.admin.gallery.edit', ['item' => $item, 'etalaseItems' => $etalaseItems]);
     }
 
     /**
@@ -80,14 +84,14 @@ class EtalaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EtalaseRequest $request, $id)
+    public function update(galleryRequest $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->items_name);
-        EtalaseModel::findOrFail($id)->update($data);
+        $data['image'] = $request->file('image')->store('assets/gallery', 'public');
+        EtalaseGalleryModel::findOrFail($id)->update($data);
 
         Alert::toast('Success', 'Data berhasil diubah');
-        return redirect()->route('etalase.index');
+        return redirect()->route('gallery.index');
     }
 
     /**
@@ -98,10 +102,10 @@ class EtalaseController extends Controller
      */
     public function destroy($id)
     {
-        $item = EtalaseModel::findOrFail($id);
-        $item->delete();
+        $items = EtalaseGalleryModel::findOrFail($id);
+        $items->delete();
 
         Alert::toast('Success', 'Data berhasil dihapus');
-        return redirect()->route('etalase.index');
+        return redirect()->route('gallery.index');
     }
 }
