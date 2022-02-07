@@ -5,10 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Etalase</h1>
-        <a href="{{ route('etalase.create') }}" class="btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> Tambah item
-        </a>
+        <h1 class="h3 mb-0 text-gray-800">Laporan penjualan</h1>
     </div>
 
     <div class="row">
@@ -19,30 +16,32 @@
                         <tr>
                             <th>#</th>
                             <th>item id</th>
-                            <th>item</th>
-                            <th>description</th>
-                            <th>stocks</th>
-                            <th>price</th>
+                            <th>item name</th>
+                            <th>stock</th>
+                            <th>terjual</th>
+                            <th>sisa</th>
+                            <th>total income</th>
                             <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
+                        {{-- @php
                             $no = 1;
                         @endphp
-                        @forelse ($items as $item)
+                        @forelse ($customers as $customer)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->items_name }}</td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->stocks }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ $customer->id }}</td>
+                            <td>{{ $customer->username }}</td>
+                            <td>{{ $customer->address }}</td>
+                            <td>{{ $customer->phone }}</td>
+                            <td>{{ $customer->created_at }}</td>
+                            <td></td>
                             <td>
-                                <a href="{{ route('etalase.edit', $item->id )}}" class="btn btn-info">
+                                <a href="{{ route('customer.edit', $customer->id )}}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                                <form action="{{ route('etalase.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('customer.destroy', $customer->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">
@@ -52,7 +51,7 @@
                             </td>
                         </tr>
                         @php
-                            $no++
+                            $no++;
                         @endphp
                         @empty
                             <tr>
@@ -60,7 +59,7 @@
                                     Data kosong
                                 </td>
                             </tr>
-                        @endforelse
+                        @endforelse --}}
                     </tbody>
                 </table>
             </div>

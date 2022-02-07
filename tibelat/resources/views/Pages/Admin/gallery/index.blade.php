@@ -17,6 +17,7 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>id</th>
                             <th>item</th>
                             <th>image</th>
@@ -24,8 +25,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
                         @forelse ($galleries as $item)
                         <tr>
+                            <td>{{ $no }}</td>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->Etalase->items_name }}</td>
                             <td>
@@ -44,6 +49,9 @@
                                 </form>
                             </td>
                         </tr>
+                        @php
+                            $no++
+                        @endphp
                         @empty
                             <tr>
                                 <td colspan="7" class="text-center">

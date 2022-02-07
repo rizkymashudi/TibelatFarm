@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalesReportsTable extends Migration
+class CreateTransactionImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateSalesReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales_reports', function (Blueprint $table) {
+        Schema::create('transaction_image', function (Blueprint $table) {
             $table->id();
             $table->integer('transaction_id');
-            $table->integer('item_id');
-            $table->integer('sold');
-            $table->integer('balance');
-            $table->bigInteger('total_incomes');
+            $table->text('image');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateSalesReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sales_reports');
+        Schema::dropIfExists('transaction_image');
     }
 }

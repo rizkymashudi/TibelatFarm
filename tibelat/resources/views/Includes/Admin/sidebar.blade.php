@@ -46,14 +46,14 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('customer.index') }}">
             <i class="fas fa-fw fa-user-friends"></i>
             <span>Customers</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('sales-report.index') }}">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Laporan penjualan</span>
         </a>

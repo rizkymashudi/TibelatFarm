@@ -75,10 +75,11 @@
     </nav>
 </div>
 
-@push('addon-script')
+
     <script src="{{ url('FrontEnd/libraries/swal/sweetalert2.all.min.js')}}"></script>
     <script>
         const cart = document.getElementbyId('button')
+        console.log(cart)
         cart.addEventListener('click', function() {
             Swal.fire({
             icon: 'error',
@@ -88,4 +89,4 @@
             })
         })
     </script>
-@endpush
+

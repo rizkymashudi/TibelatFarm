@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Transaksi COD</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Customer</h1>
     </div>
 
     <div class="row">
@@ -15,15 +15,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>transaction id</th>
+                            <th>customer id</th>
                             <th>customer name</th>
-                            <th>address</th>
+                            <th>adress</th>
                             <th>phone</th>
-                            <th>item</th>
-                            <th>quantity</th>
-                            <th>total</th>
-                            <th>status</th>
-                            <th>checkout date</th>
+                            <th>registered</th>
                             <th>action</th>
                         </tr>
                     </thead>
@@ -31,22 +27,25 @@
                         @php
                             $no = 1;
                         @endphp
-                        @forelse ($items as $item)
+                        @forelse ($customers as $customer)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->customers->username }}</td>
-                            <td>{{ $item->customers->address }}</td>
-                            <td>{{ $item->customers->phone }}</td>
-                            <td>{{ $item->etalase_item->items_name }}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->total }}</td>
-                            <td>{{ $item->transaction_status }}</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>{{ $customer->id }}</td>
+                            <td>{{ $customer->username }}</td>
+                            <td>{{ $customer->address }}</td>
+                            <td>{{ $customer->phone }}</td>
+                            <td>{{ $customer->created_at }}</td>
                             <td>
-                                <a href="{{ route('transactionCOD.edit', $item->id )}}" class="btn btn-info">
+                                {{-- <a href="{{ route('customer.edit', $customer->id )}}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>
-                                </a>
+                                </a> --}}
+                                <form action="{{ route('customer.destroy', $customer->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @php
@@ -54,7 +53,7 @@
                         @endphp
                         @empty
                             <tr>
-                                <td colspan="11" class="text-center">
+                                <td colspan="7" class="text-center">
                                     Data kosong
                                 </td>
                             </tr>

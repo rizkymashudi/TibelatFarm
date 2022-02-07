@@ -14,7 +14,7 @@
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>no</th>
+                            <th>#</th>
                             <th>transaction id</th>
                             <th>customer name</th>
                             <th>address</th>
@@ -29,9 +29,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
                         @forelse ($items as $item)
                         <tr>
-                            <td>no</td>
+                            <td>{{ $no }}</td>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->customers->username }}</td>
                             <td>{{ $item->customers->address }}</td>
@@ -48,6 +51,9 @@
                                 </a>
                             </td> --}}
                         </tr>
+                        @php
+                            $no++;
+                        @endphp
                         @empty
                             <tr>
                                 <td colspan="12" class="text-center">

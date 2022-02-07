@@ -32,6 +32,8 @@ Route::prefix('admin')
         Route::resource('transactionCOD', 'TransactionController');
         Route::resource('transactionTF', 'TransactionTFController');
         Route::resource('transactionDone', 'TransactionDoneController');
+        Route::resource('customer', 'CustomerController');
+        Route::resource('sales-report', 'SalesReportController');
     });
 Auth::routes(['verify' => true]);
 

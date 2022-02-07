@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TransactionsModel;
 use App\Models\CustomerModel;
+use App\Models\TransactionsImageModel;
+use App\Models\SalesReportModel;
 use App\Http\Requests\Admin\TransactionRequest;
+use App\Http\Requests\Admin\TransactionImageRequest;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -19,11 +22,11 @@ class TransactionTFController extends Controller
      */
     public function index()
     {
-        $items = TransactionsModel::with(['etalase_item', 'customers'])
+        $items = TransactionsModel::with(['etalase_item', 'customers', 'transactionImage'])
                                     ->where('transaction_type', '=', 'TRANSFER')
                                     ->where('transaction_status', '=', 'PENDING')
                                     ->get();
-
+       
         return view('Pages.admin.transactionTF.index', ['items' => $items]);
     }
 
@@ -34,7 +37,12 @@ class TransactionTFController extends Controller
      */
     public function create()
     {
-        //
+        $transactions = TransactionsModel::with(['etalase_item', 'customers'])
+                                        ->where('transaction_type', '=', 'TRANSFER')
+                                        ->where('transaction_status', '=', 'PENDING')
+                                        ->get();
+
+        return view('Pages.admin.transactionTF.create', ['transactions' => $transactions]);
     }
 
     /**
@@ -43,15 +51,14 @@ class TransactionTFController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EtalaseRequest $request)
+    public function store(TransactionImageRequest $request)
     {
         $data = $request->all();
-        // $data['slug'] = Str::slug($request->items_name);
-        $data['image'] = $request->file('image')->store('assets/gallery', 'public');
-        TransactionsModel::create($data);
+        $data['image'] = $request->file('image')->store('assets/Transfer_image', 'public');
+        TransactionsImageModel::create($data);
 
         Alert::toast('Success', 'Data berhasil ditambahkan');
-        return redirect()->route('etalase.index');
+        return redirect()->route('transactionTF.index');
     }
 
     /**
@@ -89,6 +96,9 @@ class TransactionTFController extends Controller
     {
         $data = $request->all();
         TransactionsModel::findOrFail($id)->update($data);
+        $salesReportInput = TransactionsModel::findOrFail($id)->where('transaction_status', '=', 'SUCCESS')
+                                                            ->first();
+        SalesReportModel::create($salesReportInput);
 
         Alert::toast('Success', 'Data berhasil diubah');
         return redirect()->route('transactionTF.index');

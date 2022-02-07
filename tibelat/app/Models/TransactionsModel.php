@@ -13,7 +13,7 @@ class TransactionsModel extends Model
     protected $table = 'transactions';
 
     protected $fillable = [
-        'customer_id', 'item_id', 'quantity', 'total', 'transaction_status', 'image'
+        'customer_id', 'item_id', 'quantity', 'total', 'transaction_status', 
     ];
 
     protected $hidden = [];
@@ -26,6 +26,10 @@ class TransactionsModel extends Model
     public function customers()
     {
         return $this->belongsTo(CustomerModel::class, 'customer_id', 'id');
+    }
+
+    public function transactionImage(){
+        return $this->hasOne(TransactionsImageModel::class, 'transaction_id', 'id');
     }
 
 }
