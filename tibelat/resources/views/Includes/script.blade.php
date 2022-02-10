@@ -7,3 +7,4 @@
 <script src="{{ url('FrontEnd/libraries/retina/retina.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ url('FrontEnd/libraries/xzoom/xzoom.min.js')}}"></script>
+<script src="{{ url('FrontEnd/libraries/scrollreveal/scrollreveal.min.js') }}"></script>

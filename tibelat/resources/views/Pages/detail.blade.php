@@ -23,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 pl-lg-0">
-                        <div class="card card-details">
+                        <div class="card card-details item__cart">
                             <h1>{{ $item->items_name }}</h1>
                             <p>{{ $item->slug }}</p>
                             @if ($item->galleries->count())
@@ -44,7 +44,7 @@
                             <p>{{ $item->description }}</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 cart__detail">
                         <div class="card card-details card-right">
                             <h2>Akun</h2>
                             <div class="customers my-2">
@@ -122,6 +122,8 @@
 
 
 @push('addon-script')
+    <script src="{{ url('FrontEnd/scripts/etalase.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             console.log('test');

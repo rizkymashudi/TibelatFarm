@@ -4,10 +4,10 @@
 @section('content')
     <!-- HEADER -->
     <header class="text-center" id="home">
-        <h1>
+        <h1 class="head__title">
             Etalase
         </h1>
-        <p class="mt-3">
+        <p class="mt-3 head__subtitle">
             Ikan sehat dan segar
         </p>
     </header>
@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-12">
-                        <div class="product-filter text-center">
+                        <div class="product-filter text-center sort">
                             @if (count($data) > 0)
                                 <button class="btn btn-filter btn-sm mt-2 active">All</button>
                                 <button class="btn btn-filter btn-sm mt-2">Cupang</button>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="section-bestseller-fish row justify-content-center mt-5">
+                <div class="section-bestseller-fish row justify-content-center mt-5 etalase">
                     @forelse ($data as $item)
                         <div class="col-sm-6 col-md-4 col-lg-3">
                             <div class="card-fish shadow text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : ''}}');">
@@ -55,3 +55,8 @@
         </section>
     </main>
 @endsection
+
+
+@push('addon-script')
+    <script src="{{ url('FrontEnd/scripts/etalase.js') }}"></script>
+@endpush

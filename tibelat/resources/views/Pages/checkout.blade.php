@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 pl-lg-0">
+                    <div class="col-lg-8 pl-lg-0 checkout__cart">
                         <div class="card card-details">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -115,7 +115,7 @@
                     </div>
             
                     
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 checkout__detail">
                         <div class="card card-details card-right">
                             <h2>Informasi Pembayaran</h2>
                             <hr>
@@ -188,6 +188,7 @@
 @endsection
 
 @push('addon-script')
+    <script src="{{ url('FrontEnd/scripts/checkout.js') }}"></script>
     <script>
         //input stepper
         function stepper(btn){
