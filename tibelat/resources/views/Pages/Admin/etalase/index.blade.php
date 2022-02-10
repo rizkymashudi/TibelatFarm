@@ -14,13 +14,13 @@
     <div class="row">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered stripe order-column hover" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>item id</th>
-                            <th>item</th>
-                            <th>description</th>
+                            <th data-priority="1">item</th>
+                            <th data-priority="2">description</th>
                             <th>stocks</th>
                             <th>price</th>
                             <th>action</th>
@@ -69,3 +69,18 @@
 
 </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive: true,
+                columnDefs: [
+                    { "width": "50%", "targets": 3 },
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 }
+                ]
+            });
+        } );
+    </script>
+@endpush

@@ -22,7 +22,17 @@ class SalesReportController extends Controller
      */
     public function index()
     {
-        // $items = SalesReportModel::with(['item' => function($query){ $query->sum('stocks'); }])->get();
+        // $items = SalesReportModel::addSelect(['itemStocks'])->select(
+        //                                                 EtalaseModel::raw('sum(stocks) as total_stocks'),
+        //                                                 DB::raw('DATE(created_at) as date'),
+        //                                                 DB::raw('SUM(sold) as total_sold'),
+        //                                                 DB::raw('SUM(balance) as total_balance'),
+        //                                                 DB::raw('SUM(total_incomes) as total_incomes'))
+        //                                     ->groupBy('date')
+        //                                     ->orderBy('date', 'desc')
+        //                                     ->get()
+        //                                     ->toArray();
+
         // dd($items);
 
         $items= SalesReportModel::with(['itemStocks'])->select(

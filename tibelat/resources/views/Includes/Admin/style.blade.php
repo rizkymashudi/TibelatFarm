@@ -6,3 +6,5 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ url('BackEnd/css/sb-admin-2.min.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+{{-- <link href="{{ url('FrontEnd/libraries/datatables/jquery.dataTables.min.css')}}" rel="stylesheet"> --}}

@@ -23,7 +23,7 @@
     <div class="row">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered stripe order-column hover" id="table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -67,3 +67,11 @@
 
 </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        } );
+    </script>
+@endpush

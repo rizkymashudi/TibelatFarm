@@ -11,8 +11,9 @@
 
     <title>Tibelat farm admin</title>
 
+    @stack('prepend-style')
     @include('Includes.Admin.style')
-    
+    @stack('addon-style')
 
 </head>
 
@@ -81,7 +82,9 @@
         </div>
     </div>
 
+    @stack('prepend-script')
     @include('Includes.Admin.script')
+    @stack('addon-script')
 </body>
 
 </html>
