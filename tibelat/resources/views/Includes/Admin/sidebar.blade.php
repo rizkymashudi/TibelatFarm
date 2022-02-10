@@ -9,13 +9,13 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ set_active('dashboard') }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Route::is('transactionCOD.index') ? set_active('transactionCOD.index') : (Route::is('transactionTF.index') ? set_active('transactionTF.index') : set_active('sales-report-detail.index'))  }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-file-invoice-dollar"></i>
@@ -31,28 +31,28 @@
         </div>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ set_active('etalase.index') }}">
         <a class="nav-link" href="{{ route('etalase.index') }}">
             <i class="fas fa-fw fa-boxes"></i>
             <span>Etalase</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ set_active('gallery.index') }}">
         <a class="nav-link" href="{{ route('gallery.index') }}">
             <i class="fas fa-fw fa-images"></i>
             <span>Gallery items</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ set_active('customer.index') }}">
         <a class="nav-link" href="{{ route('customer.index') }}">
             <i class="fas fa-fw fa-user-friends"></i>
             <span>Customers</span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Route::is('sales-report.index') ? set_active('sales-report.index') : set_active('sales-report-detail.index')  }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-file-alt"></i>

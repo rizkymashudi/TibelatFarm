@@ -8,24 +8,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navb">
-            <ul class="navbar-nav ml-auto mr-3">
-                <li class="nav-item mx-md-2">
-                    <a href="{{ route('home') }}" class="nav-link active">Home</a>
+        <div class="collapse navbar-collapse bg-white rounded" id="navb">
+            <ul class="navbar-nav ml-1 mr-1 m-3 p3">
+                <li class="nav-item mx-md-2 text-right">
+                    <a href="{{ route('home') }}" class="nav-link {{ set_active('home') }}">Home</a>
                 </li>
-                <li class="nav-item mx-md-2">
+                <li class="nav-item mx-md-2 text-right">
                     <a href="#bestseller" class="nav-link">Best seller</a>
                 </li>
-                <li class="nav-item mx-md-2">
+                <li class="nav-item mx-md-2 text-right">
                     <a href="#testimonialContent" class="nav-link">Testimonial</a>
                 </li>
-                <li class="nav-item mx-md-2">
-                    <a href="{{ route('etalase-katalog') }}" class="nav-link">Etalase</a>
+                <li class="nav-item mx-md-2 text-right">
+                    <a href="{{ route('etalase-katalog') }}" class="nav-link {{ set_active('etalase-katalog') }}">Etalase</a>
                 </li>
         
-                <li class="nav-item mx-md-2">
+                <li class="nav-item mx-md-2 text-right">
                     @if(Auth::check())
-                        <a href="{{ route('cart') }}" class="nav-link cart">
+                        <a href="{{ route('cart') }}" class="nav-link cart {{ set_active('cart') }}">
                             <i class="fas fa-shopping-cart"></i>
                             @if(App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() > 0)
                                 <span class="badge badge-danger">{{ App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() }}</span>
@@ -40,7 +40,7 @@
 
             @if (Auth::check())
                 <!-- MOBILE BUTTON -->
-                <form class="form-inline d-sm-block d-md-none" action="{{ route('logout') }}" method="POST">
+                <form class="form-inline d-sm-block d-md-none text-right" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-login my-2 my-sm-0 px-4">
                         <i class="fas fa-sign-out-alt"></i>
@@ -48,8 +48,8 @@
                 </form>
             @else
                 <!-- MOBILE BUTTON -->
-                <form class="form-inline d-sm-block d-md-none" action="{{ route('login') }}">
-                    <button class="btn btn-login my-2 my-sm-0 px-4">
+                <form class="form-inline d-sm-block d-md-none text-right" action="{{ route('login') }}">
+                    <button class="btn btn-login my-2 my-sm-0 px-4 text-right">
                         Login
                     </button>
                 </form>

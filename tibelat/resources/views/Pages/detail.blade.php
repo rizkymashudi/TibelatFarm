@@ -34,7 +34,7 @@
                                 <div class="xzoom-thumbs">
                                     @foreach ($item->galleries as $gallery)
                                     <a href="{{ Storage::url($gallery->image) }}">
-                                        <img src="{{ Storage::url($gallery->image) }}" class="xzoom-gallery" width="128" xpreview="{{ Storage::url($gallery->image) }}">
+                                        <img src="{{ Storage::url($gallery->image) }}" class="xzoom-gallery" width="128" height="90" xpreview="{{ Storage::url($gallery->image) }}">
                                     </a>
                                     @endforeach
                                 </div>
@@ -120,21 +120,17 @@
     </main>
 @endsection
 
-@push('prepend-style')
-    <link rel="stylesheet" href="{{ url('FrontEnd/libraries/xzoom/xzoom.css')}}">
-@endpush
 
 @push('addon-script')
-    <script src="{{ url('FrontEnd/libraries/xzoom/xzoom.min.js')}}"></script>
     <script>
         $(document).ready(function() {
+            console.log('test');
             $('.xzoom, .xzoom-gallery').xzoom({
-                zoomWidth: 500,
+                zoomWidth: 700,
                 title: false,
                 tint: '#333',
                 Xoffset: 15
             })
-            console('asd')
         })
     </script>
 @endpush

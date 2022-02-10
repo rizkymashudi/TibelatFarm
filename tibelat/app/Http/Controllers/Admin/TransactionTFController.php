@@ -50,6 +50,7 @@ class TransactionTFController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //tidak dipakai
     public function store(TransactionImageRequest $request)
     {
         $data = $request->all();
