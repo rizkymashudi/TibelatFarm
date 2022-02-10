@@ -9,21 +9,21 @@
         </button>
 
         <div class="collapse navbar-collapse bg-white rounded" id="navb">
-            <ul class="navbar-nav ml-1 mr-1 m-3 p3">
-                <li class="nav-item mx-md-2 text-right">
+            <ul class="navbar-nav ml-auto mr-1 m-3 p3">
+                <li class="nav-item mx-md-2">
                     <a href="{{ route('home') }}" class="nav-link {{ set_active('home') }}">Home</a>
                 </li>
-                <li class="nav-item mx-md-2 text-right">
+                <li class="nav-item mx-md-2">
                     <a href="#bestseller" class="nav-link">Best seller</a>
                 </li>
-                <li class="nav-item mx-md-2 text-right">
+                <li class="nav-item mx-md-2">
                     <a href="#testimonialContent" class="nav-link">Testimonial</a>
                 </li>
-                <li class="nav-item mx-md-2 text-right">
+                <li class="nav-item mx-md-2">
                     <a href="{{ route('etalase-katalog') }}" class="nav-link {{ set_active('etalase-katalog') }}">Etalase</a>
                 </li>
         
-                <li class="nav-item mx-md-2 text-right">
+                <li class="nav-item mx-md-2">
                     @if(Auth::check())
                         <a href="{{ route('cart') }}" class="nav-link cart {{ set_active('cart') }}">
                             <i class="fas fa-shopping-cart"></i>
