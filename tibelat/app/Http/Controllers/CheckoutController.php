@@ -63,6 +63,34 @@ class CheckoutController extends Controller
         return redirect()->back();        
     }
 
+    public function buynow(Request $request, $id){
+
+        $itemProduct = EtalaseModel::with('galleries')->findOrFail($id);
+        
+        $customer = CustomerModel::where('user_id', '=', Auth::user()->id)->first();
+
+        // dd($itemProduct->galleries[0]->id);
+
+        if( Auth::user()->name === $customer->username):
+            $transaction = TransactionsModel::create([
+                'customer_id'   => $customer->id,
+                'item_id'       => $id,
+                'imageitem_id'  => $itemProduct->galleries[0]->id,
+                'quantity'      => 0,
+                'total'         => $itemProduct->price,
+                'transaction_status' => 'IN_CART',
+                'transaction_type'   => 'TRANSFER',
+                'created_at'    => now()
+            ]);
+        else:
+            Alert::error('input gagal!', 'sepertinya ada yang salah');
+            return redirect()->back();
+        endif;
+
+        Alert::toast('item dimasukan ke keranjang', 'success');
+        return redirect()->route('cart', $transaction->id);  
+    }
+
     public function create(Request $request, $id){
         
         $data = $request->all();

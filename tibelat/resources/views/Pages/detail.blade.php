@@ -42,29 +42,6 @@
                             @endif
                             <h2>Tentang {{ $item->items_name }}</h2>
                             <p>{{ $item->description }}</p>
-                            {{-- <div class="features row">
-                                <div class="col-md-4">
-                                    <img src="FrontEnd/images/ic_event.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 border-left">
-                                    <img src="FrontEnd/images/ic_foods.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 border-left">
-                                    <img src="FrontEnd/images/ic_language.png" alt="" class="featured-image">
-                                    <div class="description">
-                                        <h3>Feature event</h3>
-                                        <p>Lorem</p>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -122,9 +99,12 @@
                         </div>
                         <div class="join-container">
                             @auth
-                                <a href="checkout.html" class="btn btn-block btn-buy mt-3 py-2">
+                            <form action="{{ route('buy-now', $item->id)}}" method="POST">
+                                @csrf
+                                <button class="btn btn-block btn-buy mt-3 py-2">
                                     Beli Sekarang
-                                </a>
+                                </button>
+                            </form>
                             @endauth
                             @guest
                                 <a href="{{ route('login') }}" class="btn btn-block btn-buy mt-3 py-2">

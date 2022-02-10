@@ -25,6 +25,9 @@ Route::get('/keranjang/checkout', 'CheckoutController@index')->name('cart');
 Route::post('/checkout/{id}', 'CheckoutController@process')->name('cart-process')
                                                         ->middleware(['auth', 'verified']);
 
+Route::post('/buynow/{id}', 'CheckoutController@buynow')->name('buy-now')
+                                                        ->middleware(['auth', 'verified']);
+
 Route::post('/checkout/done/{id}', 'CheckoutController@create')->name('checkout-done')
                                                         ->middleware(['auth', 'verified']);
 
