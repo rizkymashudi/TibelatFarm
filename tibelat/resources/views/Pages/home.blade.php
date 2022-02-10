@@ -16,7 +16,15 @@
             Ikan cantik dan segar berkualitas <br> 
             untuk kebutuhan konsumsi anda atau sekedar penghias rumah
         </p>
-        <a href="{{ route('etalase') }}" class="btn btn-get-started px-4 mt-4">Pilih ikanmu sekarang!</a>
+        
+        @auth
+            <a href="{{ route('etalase-katalog') }}" class="btn btn-get-started px-4 mt-4">Pilih ikanmu sekarang!</a>
+        @endauth
+
+        @guest
+            <a href="{{ route('register') }}" class="btn btn-get-started px-4 mt-4">Pilih ikanmu sekarang!</a>
+        @endguest
+        
 
     </header>
 
@@ -57,38 +65,49 @@
         <section class="section-bestseller-content" id="bestsellerContent">
             <div class="container">
                 <div class="section-bestseller-fish row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/cupang.jpg');">
-                            <div class="fish-name">IKAN CUPANG</div>
-                            <div class="fish-button mt-auto">
-                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                    @forelse ($data as $item)
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : ''}}');">
+                                <div class="fish-name">{{ $item->items_name }}</div>
+                                <div class="fish-button mt-auto">
+                                    <a href="{{ route('detail', $item->slug) }}" class="btn btn-fish-details px-4">View details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/mas.jpg');">
-                            <div class="fish-name">IKAN MAS</div>
-                            <div class="fish-button mt-auto">
-                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                    @empty
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/cupang.jpg');">
+                                <div class="fish-name">IKAN CUPANG</div>
+                                <div class="fish-button mt-auto">
+                                    <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)),url('./FrontEnd/images/karang.jpg');">
-                            <div class="fish-name">IKAN KARANG</div>
-                            <div class="fish-button mt-auto">
-                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/mas.jpg');">
+                                <div class="fish-name">IKAN MAS</div>
+                                <div class="fish-button mt-auto">
+                                    <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
-                            <div class="fish-name">IKAN SALMON</div>
-                            <div class="fish-button mt-auto">
-                                <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)),url('./FrontEnd/images/karang.jpg');">
+                                <div class="fish-name">IKAN KARANG</div>
+                                <div class="fish-button mt-auto">
+                                    <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card-fish text-center d-flex flex-column" style="background-image: linear-gradient(rgba(8, 8, 8, 0.678), rgba(0, 0, 0, 0)), url('./FrontEnd/images/salmon.jpg');">
+                                <div class="fish-name">IKAN SALMON</div>
+                                <div class="fish-button mt-auto">
+                                    <a href="{{ route('detail') }}" class="btn btn-fish-details px-4">View details</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -156,7 +175,12 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <a href="#" class="btn btn-need-help px-4 mt-4 mx1">Butuh bantuan</a>
-                        <a href="{{ route('etalase') }}" class="btn btn-choose-fish px-4 mt-4 mx1">Mulai pilih ikanmu!</a>
+                        @auth
+                            <a href="{{ route('etalase-katalog') }}" class="btn btn-choose-fish px-4 mt-4 mx1">Mulai pilih ikanmu!</a>
+                        @endauth
+                        @guest
+                            <a href="{{ route('register') }}" class="btn btn-choose-fish px-4 mt-4 mx1">Mulai pilih ikanmu!</a>
+                        @endguest
                     </div>
                 </div>
             </div>

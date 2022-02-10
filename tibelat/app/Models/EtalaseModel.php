@@ -13,7 +13,7 @@ class EtalaseModel extends Model
     protected $table = 'items';
 
     protected $fillable = [
-        'items_name', 'slug', 'description', 'stocks', 'price'
+        'items_name', 'slug', 'description', 'stocks', 'current_stocks', 'price'
     ];
 
     protected $hidden = [];
@@ -22,6 +22,14 @@ class EtalaseModel extends Model
     //Table relation with gallery table
     public function galleries(){
         return $this->hasMany(EtalaseGalleryModel::class, 'items_id', 'id');
+    }
+
+    public function gallerie(){
+        return $this->hasOne(EtalaseGalleryModel::class, 'items_id', 'id');
+    }
+
+    public function salesReport(){
+        return $this->belongsTO(SalesReportModel::class, 'items_id', 'id');
     }
 
 

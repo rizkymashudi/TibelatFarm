@@ -15,7 +15,8 @@ class DashboardController extends Controller
             'cod'       => TransactionsModel::where('transaction_type', '=', 'COD')->count(),
             'transfer'  => TransactionsModel::where('transaction_type', '=', 'TRANSFER')->count(),
             'complete'  => TransactionsModel::where('transaction_status', '=', 'SUCCESS')->count(),
-            'canceled'   => TransactionsModel::where('transaction_status', '=', 'CANCELE')->count(),
+            'canceled'  => TransactionsModel::where('transaction_status', '=', 'CANCEL')->count(),
+            'incart'    => TransactionsModel::where('transaction_status', '=', 'IN_CART')->count(),
         ]);
     }
 }

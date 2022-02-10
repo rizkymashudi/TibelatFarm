@@ -26,8 +26,8 @@
                 @csrf
                 <div class="form-group">
                     <label for="items_id">Etalase items</label>
-                    <select name="items_id" id="" disabled class="form-control">
-                        <option value="{{ $item->id }}">gallery id: {{ $item->id }}</option>
+                    <select name="items_id" required disabled class="form-control">
+                        <option value="{{ $item->items_id }}">id gallery: {{ $item->id }}</option>
                         @foreach ($etalaseItems as $item)
                             <option value="{{ $item->id }}">
                                 {{ $item->items_name }}
@@ -38,6 +38,7 @@
                 <div class="form-group">
                     <label for="image">Gambar</label>
                     <input type="file" name="image" class="form-control" placeholder="Image">
+                    <p class="text-danger mt-2">*ukuran gambar tidak bisa lebih dari 1 mb</p>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Edit

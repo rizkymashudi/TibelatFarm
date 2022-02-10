@@ -28,6 +28,10 @@ class SalesReportModel extends Model
         return $this->belongsTo(TransactionsModel::class, 'transaction_id', 'id');
     }
 
+    public function itemStocks(){
+        return $this->hasMany(EtalaseModel::class, 'id', 'item_id');
+    }
+
 
 
 }

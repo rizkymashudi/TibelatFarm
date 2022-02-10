@@ -53,11 +53,18 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('sales-report.index') }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Laporan penjualan</span>
         </a>
-    </li>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('sales-report.index') }}">Laporan penjualan</a>
+                <a class="collapse-item" href="{{ route('sales-report-detail.index') }}">Detail laporan penjualan</a>
+            </div>
+        </div>
+    </li>   
 
     <!-- Divider -->
     <hr class="sidebar-divider">

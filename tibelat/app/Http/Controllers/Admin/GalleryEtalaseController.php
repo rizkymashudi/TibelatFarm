@@ -8,6 +8,7 @@ use App\Models\EtalaseGalleryModel;
 use App\Models\EtalaseModel;
 use App\Http\Requests\Admin\GalleryRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class GalleryEtalaseController extends Controller
@@ -42,7 +43,7 @@ class GalleryEtalaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(galleryRequest $request)
+    public function store(GalleryRequest $request)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store('assets/gallery', 'public');
@@ -84,11 +85,13 @@ class GalleryEtalaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(galleryRequest $request, $id)
+    public function update(GalleryRequest $request, $id)
     {
+
         $data = $request->all();
         $data['image'] = $request->file('image')->store('assets/gallery', 'public');
-        EtalaseGalleryModel::findOrFail($id)->update($data);
+        $a = EtalaseGalleryModel::findOrFail($id)->update($data);
+    
 
         Alert::toast('Success', 'Data berhasil diubah');
         return redirect()->route('gallery.index');

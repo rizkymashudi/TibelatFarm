@@ -24,9 +24,8 @@ class TransactionTFController extends Controller
     {
         $items = TransactionsModel::with(['etalase_item', 'customers', 'transactionImage'])
                                     ->where('transaction_type', '=', 'TRANSFER')
-                                    ->where('transaction_status', '=', 'PENDING')
                                     ->get();
-       
+
         return view('Pages.admin.transactionTF.index', ['items' => $items]);
     }
 
@@ -39,8 +38,8 @@ class TransactionTFController extends Controller
     {
         $transactions = TransactionsModel::with(['etalase_item', 'customers'])
                                         ->where('transaction_type', '=', 'TRANSFER')
-                                        ->where('transaction_status', '=', 'PENDING')
                                         ->get();
+        // dd($transactions);
 
         return view('Pages.admin.transactionTF.create', ['transactions' => $transactions]);
     }
@@ -54,6 +53,7 @@ class TransactionTFController extends Controller
     public function store(TransactionImageRequest $request)
     {
         $data = $request->all();
+        dd($request->file('image'));
         $data['image'] = $request->file('image')->store('assets/Transfer_image', 'public');
         TransactionsImageModel::create($data);
 

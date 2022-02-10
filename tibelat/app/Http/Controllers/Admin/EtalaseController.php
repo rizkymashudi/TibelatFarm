@@ -43,6 +43,8 @@ class EtalaseController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->items_name);
+        $data['current_stocks'] = $request->stocks;
+        
         EtalaseModel::create($data);
 
         Alert::toast('Success', 'Data berhasil ditambahkan');

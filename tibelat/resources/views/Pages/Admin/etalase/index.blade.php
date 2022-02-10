@@ -36,7 +36,7 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->items_name }}</td>
                             <td>{{ $item->description }}</td>
-                            <td>{{ $item->stocks }}</td>
+                            <td>{{ $item->current_stocks }}</td>
                             <td>{{ $item->price }}</td>
                             <td>
                                 <a href="{{ route('etalase.edit', $item->id )}}" class="btn btn-info">

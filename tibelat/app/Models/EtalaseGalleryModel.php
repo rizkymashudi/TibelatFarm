@@ -23,5 +23,9 @@ class EtalaseGalleryModel extends Model
         return $this->belongsTo(EtalaseModel::class, 'items_id', 'id');
     }
 
+    public function productImageTransaction(){
+        return $this->belongsTo(TransactionsModel::class, 'items_id', 'id');
+    }
+
 
 }

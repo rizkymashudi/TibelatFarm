@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id</th>
+                            <th>id gallery</th>
                             <th>item</th>
                             <th>image</th>
                             <th>action</th>

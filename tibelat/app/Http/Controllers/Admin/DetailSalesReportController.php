@@ -7,10 +7,8 @@ use App\Models\SalesReportModel;
 use App\Models\TransactionsModel;
 use App\Models\EtalaseModel;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Carbon;
 
-class SalesReportController extends Controller
+class DetailSalesReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,20 +17,8 @@ class SalesReportController extends Controller
      */
     public function index()
     {
-        // $items = SalesReportModel::with(['item' => function($query){ $query->sum('stocks'); }])->get();
-        // dd($items);
-
-        $items= SalesReportModel::with(['itemStocks'])->select(
-                                DB::raw('DATE(created_at) as date'),
-                                DB::raw('SUM(sold) as total_sold'),
-                                DB::raw('SUM(balance) as total_balance'),
-                                DB::raw('SUM(total_incomes) as total_incomes'))
-                    ->groupBy('date')
-                    ->orderBy('date', 'desc')
-                    ->get();
-
-
-        return view('Pages.admin.report.SalesReport.index', ['items' => $items]);
+        $items = SalesReportModel::with(['item'])->get();  
+        return view('Pages.admin.report.DetailSalesReport.index', ['items' => $items]);
     }
 
     /**

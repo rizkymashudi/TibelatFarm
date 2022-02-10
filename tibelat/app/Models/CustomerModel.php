@@ -12,8 +12,17 @@ class CustomerModel extends Model
     protected $table = "customers";
 
     protected $fillable = [
-        'username', 'address', 'phone'
+        'user_id', 'username', 'address', 'phone'
     ];
 
     protected $hidden = [];
+
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function transactions(){
+        return $this->hasMany(TransactionsModel::class, 'customer_id', 'id');
+    }
 }

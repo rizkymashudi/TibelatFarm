@@ -20,19 +20,21 @@
                     <a href="#testimonialContent" class="nav-link">Testimonial</a>
                 </li>
                 <li class="nav-item mx-md-2">
-                    <a href="{{ route('etalase') }}" class="nav-link">Etalase</a>
+                    <a href="{{ route('etalase-katalog') }}" class="nav-link">Etalase</a>
                 </li>
         
                 <li class="nav-item mx-md-2">
                     @if(Auth::check())
-                        <a href="{{ route('checkout')}}" class="nav-link cart"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="{{ route('cart') }}" class="nav-link cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            @if(App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() > 0)
+                                <span class="badge badge-danger">{{ App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() }}</span>
+                            @endif
+                            {{-- <span class="badge bg-danger ms-2 text-white">8</span> --}}
+                        </a>
                     @else
-                        <a href="#" id="cart" class="nav-link cart text-muted"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="#" id="cart" class="nav-link cart text-muted "><i class="fas fa-shopping-cart"></i></a>
                     @endif
-                </li>
-
-                <li class="nav-item mx-md-2">
-                    <button id="button" class="nav-link">test</button>
                 </li>
             </ul>
 

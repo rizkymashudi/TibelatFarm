@@ -15,10 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 // Route FrontEnd
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/etalase', 'EtalaseController@index')->name('etalase');
-Route::get('/detail', 'DetailController@index')->name('detail');
-Route::get('/checkout', 'CheckoutController@index')->name('checkout');
-Route::get('/checkout/success', 'CheckoutController@success')->name('checkout-success');
+Route::get('/etalase-katalog', 'EtalaseFEController@index')->name('etalase-katalog');
+
+Route::get('/detail/{slug}', 'DetailController@index')->name('detail');
+
+//Checkout
+Route::get('/keranjang/checkout', 'CheckoutController@index')->name('cart');
+
+Route::post('/checkout/{id}', 'CheckoutController@process')->name('cart-process')
+                                                        ->middleware(['auth', 'verified']);
+
+Route::post('/checkout/done/{id}', 'CheckoutController@create')->name('checkout-done')
+                                                        ->middleware(['auth', 'verified']);
+
+Route::get('/checkout/remove/{id}', 'CheckoutController@remove')->name('checkout-remove')
+                                                        ->middleware(['auth', 'verified']);
+
+
+// Route::get('/checkout/success', 'CheckoutController@success')->name('checkout_success');
 
 
 // Route BackEnd
@@ -34,6 +48,7 @@ Route::prefix('admin')
         Route::resource('transactionDone', 'TransactionDoneController');
         Route::resource('customer', 'CustomerController');
         Route::resource('sales-report', 'SalesReportController');
+        Route::resource('sales-report-detail', 'DetailSalesReportController');
     });
 Auth::routes(['verify' => true]);
 
