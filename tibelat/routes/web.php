@@ -52,6 +52,10 @@ Route::prefix('admin')
         Route::resource('customer', 'CustomerController');
         Route::resource('sales-report', 'SalesReportController');
         Route::resource('sales-report-detail', 'DetailSalesReportController');
+        Route::get('export-pdf', 'SalesReportController@exportPDF')->name('export-pdf');
+        Route::get('export-excel', 'SalesReportController@exportExcel')->name('export-excel');
+        Route::get('detail-export-pdf', 'DetailSalesReportController@exportPDF')->name('detail-export-pdf');
+        Route::get('detail-export-excel', 'DetailSalesReportController@exportExcel')->name('detail-export-excel');
     });
 Auth::routes(['verify' => true]);
 

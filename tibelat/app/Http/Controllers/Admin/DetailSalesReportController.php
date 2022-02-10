@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\SalesReportModel;
 use App\Models\TransactionsModel;
 use App\Models\EtalaseModel;
+use App\Exports\DetailLaporanPenjualanExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DetailSalesReportController extends Controller
 {
@@ -19,6 +21,21 @@ class DetailSalesReportController extends Controller
     {
         $items = SalesReportModel::with(['item'])->get();  
         return view('Pages.admin.report.DetailSalesReport.index', ['items' => $items]);
+    }
+
+    public function exportPDF(){
+        
+        $items = SalesReportModel::with(['item'])->get();
+
+        $pdf = \PDF::loadView('Pages.admin.report.DetailSalesReport.pdf', ['items' => $items]);
+        $pdfname = now()->toDateString();
+        return $pdf->download("DetailSalesReport-$pdfname.pdf");
+    }
+
+    public function exportExcel() 
+    {
+        $excelname = now()->toDateString();
+        return Excel::download(new DetailLaporanPenjualanExport, "DetailSalesReport-$excelname.xlsx");
     }
 
     /**

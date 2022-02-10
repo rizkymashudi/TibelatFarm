@@ -6,6 +6,18 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detail Laporan penjualan</h1>
+        <div class="d-flex justify-content-end ">
+            <div class="col-7 col-md-7 align-self-end text-center mt-2">
+                <a href="{{ route('detail-export-pdf') }}" class="btn btn-sm btn-danger shadow-sm"> 
+                    export pdf
+                </a>
+            </div>
+            <div class="col-7 col-md-7 align-self-end text-center mt-2">
+                <a href="{{ route('detail-export-excel') }}" class="btn btn-sm btn-success shadow-sm"> 
+                    export excel
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="row">
