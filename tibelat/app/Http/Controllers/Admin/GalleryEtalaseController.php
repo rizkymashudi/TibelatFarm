@@ -49,7 +49,7 @@ class GalleryEtalaseController extends Controller
         $data['image'] = $request->file('image')->store('assets/gallery', 'public');
         EtalaseGalleryModel::create($data);
 
-        Alert::toast('Success', 'Data berhasil ditambahkan');
+        Alert::toast('Data berhasil ditambahkan', 'success');
         return redirect()->route('gallery.index');
     }
 
@@ -93,7 +93,7 @@ class GalleryEtalaseController extends Controller
         $a = EtalaseGalleryModel::findOrFail($id)->update($data);
     
 
-        Alert::toast('Success', 'Data berhasil diubah');
+        Alert::toast('Data berhasil diubah', 'success');
         return redirect()->route('gallery.index');
     }
 
@@ -108,7 +108,7 @@ class GalleryEtalaseController extends Controller
         $items = EtalaseGalleryModel::findOrFail($id);
         $items->delete();
 
-        Alert::toast('Success', 'Data berhasil dihapus');
+        Alert::toast('Data berhasil dihapus', 'success');
         return redirect()->route('gallery.index');
     }
 }

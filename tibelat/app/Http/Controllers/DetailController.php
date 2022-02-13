@@ -12,6 +12,7 @@ class DetailController extends Controller
                             ->where('slug', $slug)
                             ->firstOrFail();
 
+
         return view('Pages.detail', ['item' => $item]);
     }
 }

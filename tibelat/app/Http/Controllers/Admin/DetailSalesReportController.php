@@ -19,7 +19,8 @@ class DetailSalesReportController extends Controller
      */
     public function index()
     {
-        $items = SalesReportModel::with(['item'])->get();  
+        $items = SalesReportModel::join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')
+                                    ->get();  
         return view('Pages.admin.report.DetailSalesReport.index', ['items' => $items]);
     }
 

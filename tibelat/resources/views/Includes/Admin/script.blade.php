@@ -17,4 +17,5 @@
 {{-- <script src="{{ url('FrontEnd/libraries/datatables/jquery.datatables.min.js') }}"></script>
 <script src="{{ url('FrontEnd/libraries/datatables/jquery-3.5.1.js') }}"></script> --}}
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

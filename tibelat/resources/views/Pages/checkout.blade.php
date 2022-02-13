@@ -28,13 +28,13 @@
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
-                                        @foreach ($errors as $error)
+                                        @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </ul>
                                 </div>
                             @endif
-
+                            
                             <h1>Checkout</h1>
                             <div class="attandee">
                                 <table class="table table-responsive-sm text-center">
@@ -49,17 +49,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <div id="error"></div>
                                         @forelse ($itemCart as $item)
-                                        <form action="{{ route('checkout-done', $item->id) }}" method="POST" enctype="multipart/form-data"> {{-- start form --}}
+                                        <form action="{{ route('checkout-done', $item->id) }}" method="POST" name="formcart" id="formcart" enctype="multipart/form-data"> {{-- start form --}}
                                             @csrf                                
                                             <tr>
                                                 <td>
-                                                    <img src="{{ Storage::url($item->product_image->image) }}" height="60">
+                                                    <input type="hidden" name="idcart[]" value="{{ $item->id }}">
+                                                    <input type="hidden" name="itemid[]" value="{{ $item->item_id }}">
+                                                    @if(!empty($item->item_image))
+                                                        <img src="{{ Storage::url($item->item_image->image->first()->path) }}" alt="" width="100px" height="100px">
+                                                    @else
+                                                        <img src="{{ Storage::url('assets/default-placeholder.png') }}" height="60">
+                                                    @endif
                                                 </td>
                                                 <td class="align-middle">{{ $item->etalase_item->items_name }}</td>
                                                 <td class="align-middle">
                                                     <button type="button" class="decrement" id="decrement" data-id="{{ $item->id }}" onclick="stepper(this)"> - </button>
-                                                    <input name="quantity" class="numberStyle" id="inputQty{{ $item->id }}" type="number" min="1" max="99" step="1" value="1" readonly>
+                                                    <input  name="quantity[]" class="numberStyle" id="inputQty{{ $item->id }}" type="number" min="1" max="99" step="1" value="0" readonly>
                                                     <button type="button" class="increment" id="increment" data-id="{{ $item->id }}" onclick="stepper(this)"> + </button>
                                                 </td>
                                                 <td class="align-middle">
@@ -68,7 +75,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <input type="hidden" id="totaltxt{{ $item->id }}" name="total" class="total" value="" />
+                                                    <input type="hidden" id="totaltxt{{ $item->id }}" name="total[]" class="total" value="{{ $item->etalase_item->price }}" />
                                                     <div id="total{{ $item->id }}" data-price="5000"></div>
                                                 </td>
                                                 <td class="align-middle">
@@ -91,6 +98,7 @@
                                 <table class="table table-responsive-sm text-center">
                                     <tbody>
                                         <tr class="d-flex flex-row-reverse">
+                                            <input type="hidden" name="subtotal" class="subtotaltxt" value="0">
                                             <th width="30%" style="display:flex;"><div>Rp.</div> <div class="subtotal"></div></th>
                                             <td width="20%" class="text-right">
                                                 Sub total: 
@@ -167,9 +175,16 @@
 
                         </div>
                         <div class="join-container">
-                            <button class="btn btn-block btn-buy mt-3 py-2 btn-done" id="btn-buy" type="submit">
-                                Saya sudah melakukan pembayaran transfer
-                            </button>
+                            @if (App\Models\CartModel::count() > 0)
+                                <button class="btn btn-block btn-buy mt-3 py-2 btn-done" id="btn-buy" type="submit">
+                                    Saya sudah melakukan pembayaran transfer
+                                </button>
+                            @else
+                                <button class="btn btn-block btn-buy mt-3 py-2 btn-done" id="btn-buy" type="submit" disabled>
+                                    Saya sudah melakukan pembayaran transfer
+                                </button>
+                            @endif
+                            
                             {{-- <a href="success.html" class="btn btn-block btn-buy mt-3 py-2" id="btn-buy">
                                 Saya sudah melakukan pembayaran transfer
                             </a> --}}
@@ -190,6 +205,7 @@
 @push('addon-script')
     <script src="{{ url('FrontEnd/scripts/checkout.js') }}"></script>
     <script>
+ 
         //input stepper
         function stepper(btn){
 
@@ -235,20 +251,21 @@
                 }
                 var sumarr = arrpushtxt.reduce((partialSum, a) => partialSum + a, 0);
                 var totalall = sumarr + 10000;
+
+                document.getElementsByClassName("subtotaltxt")[0].value = sumarr;
                 document.getElementsByClassName("subtotal")[0].innerHTML = sumarr;
                 document.getElementsByClassName("totalall")[0].innerHTML = totalall;
-                
-                
+                      
             }
-
-                
-
         }
+
+
 
         //Payment method
         function radioClicked(x){
             let button = document.querySelector("#btn-buy");
             let address = document.getElementById("inputAlamat");
+            // let qty_val = document.querySelector(".numberStyle");
 
             button.disabled = true;
             if (x == 0) {
@@ -258,14 +275,16 @@
                 document.querySelector("#btn-buy").textContent = " Saya sudah melakukan pembayaran transfer"
                 document.querySelector("#payment-instructions").textContent = "Harap selesaikan pembayaran anda sebelum melanjutkan pembelian anda"
             } else {
+                
                 address.style.display = "block"
                 document.getElementById("transferBank").style.display = "none"
                 document.getElementById("buktitf").style.display = "none"
                 button.textContent = "Lakukan pembelian dengan COD"
                 document.querySelector("#payment-instructions").textContent = "Harap masukan alamat pengiriman dengan benar sebelum melakukan pembelian"
-                
-                button.disabled = false;
+               
             }
+
+            button.disabled = false;
 
             return
         }
@@ -283,6 +302,6 @@
                 button.disabled = true;
             }
         }
-        
+    
     </script>
 @endpush

@@ -19,12 +19,12 @@ class TransactionDoneController extends Controller
      */
     public function index()
     {
-        $items = TransactionsModel::with(['etalase_item', 'customers'])
+        $transactions = TransactionsModel::with(['item', 'customers'])
                                     ->where('transaction_status', '=', 'SUCCESS')
                                     ->orWhere('transaction_status', '=', 'CANCEL')
                                     ->get();
     
-        return view('Pages.admin.transactionDONE.index', ['items' => $items]);
+        return view('Pages.admin.transactionDONE.index', ['transactions' => $transactions]);
     }
 
     /**

@@ -30,11 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="customer_name">Customer name</label>
-                    <input class="form-control" type="text" value="{{ $item->customers->username }}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="item">Item</label>
-                    <input class="form-control" type="text" value="{{ $item->etalase_item->items_name }}" readonly>
+                    <input class="form-control" type="text" value="{{ $item->customers->name }}" readonly>
                 </div>
                 <label for="transaction_status">Status transaksi</label>
                 <select name="transaction_status" id="" required class="form-control">

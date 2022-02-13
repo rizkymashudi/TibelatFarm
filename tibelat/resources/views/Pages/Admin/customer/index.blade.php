@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $customer->id }}</td>
-                            <td>{{ $customer->username }}</td>
+                            <td>{{ $customer->name }}</td>
                             <td>{{ $customer->address }}</td>
                             <td>{{ $customer->phone }}</td>
                             <td>{{ $customer->created_at }}</td>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EtalaseRequest extends FormRequest
+class CheckOutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class EtalaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'items_name' => 'required|max:255',
-            'description' => 'required',
-            'current_stocks' => 'required|integer|min:0',
-            'price' => 'required|integer|min:0'
+            'subtotal' => 'required|min:0'
         ];
     }
 }

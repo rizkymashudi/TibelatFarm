@@ -16,7 +16,7 @@
     <main>
         <section class="section-bestseller-content" id="bestsellerContent">
             <div class="container">
-                <div class="row justify-content-center mt-5">
+                {{-- <div class="row justify-content-center mt-5">
                     <div class="col-md-12">
                         <div class="product-filter text-center sort">
                             @if (count($data) > 0)
@@ -30,7 +30,7 @@
                             @endif
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="section-bestseller-fish row justify-content-center mt-5 etalase">
                     @forelse ($data as $item)
                         <div class="col-sm-6 col-md-4 col-lg-3">

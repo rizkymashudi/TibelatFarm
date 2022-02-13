@@ -20,8 +20,8 @@
                             <th>address</th>
                             <th>phone</th>
                             <th>item</th>
-                            <th>quantity</th>
-                            <th>total</th>
+                            <th>total quantity</th>
+                            <th>(Rp) total bayar</th>
                             <th>status</th>
                             <th>checkout date</th>
                             <th>action</th>
@@ -31,20 +31,24 @@
                         @php
                             $no = 1;
                         @endphp
-                        @forelse ($items as $item)
+                        @forelse ($transactions as $transaction)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->customers->username }}</td>
-                            <td>{{ $item->customers->address }}</td>
-                            <td>{{ $item->customers->phone }}</td>
-                            <td>{{ $item->etalase_item->items_name }}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->total }}</td>
-                            <td>{{ $item->transaction_status }}</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>{{ $transaction->id }}</td>
+                            <td>{{ $transaction->customers->name }}</td>
+                            <td>{{ $transaction->customers->address }}</td>
+                            <td>{{ $transaction->customers->phone }}</td>
                             <td>
-                                <a href="{{ route('transactionCOD.edit', $item->id )}}" class="btn btn-info">
+                                @foreach($transaction->item as $itemname)
+                                    {{ $itemname->item_name }},
+                                @endforeach
+                            </td>
+                            <td>{{ $transaction->item->sum('quantity') }}</td>
+                            <td>{{ number_format($transaction->total) }}</td>
+                            <td>{{ $transaction->transaction_status }}</td>
+                            <td>{{ $transaction->created_at }}</td>
+                            <td>
+                                <a href="{{ route('transactionCOD.edit', $transaction->id )}}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                             </td>

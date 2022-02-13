@@ -17,12 +17,12 @@ sr.reveal('.button__cta', {
 
 sr.reveal('.statistic__bar', {
     origin: 'left',
-    interval: 200
+    interval: 100
 })
 
 sr.reveal('.head__title2', {
     origin: 'bottom',
-    interval: 150
+    interval: 100
 })
 
 sr.reveal('.best__card1',{

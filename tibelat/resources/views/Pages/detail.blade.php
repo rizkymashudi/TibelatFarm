@@ -72,7 +72,7 @@
                                 <tr>
                                     <th width="50%">Stok</th>
                                     <td width="50%" class="text-right">
-                                        {{ $item->stocks }} ekor
+                                        {{ $item->current_stocks }} ekor
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,6 +82,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            
                             @if(Auth::check())
                             <form action="{{ route('cart-process', $item->id) }}" method="POST" class="text-center">
                                 @csrf

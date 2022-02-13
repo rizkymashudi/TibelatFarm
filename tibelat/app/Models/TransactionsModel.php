@@ -12,20 +12,22 @@ class TransactionsModel extends Model
 
     protected $table = 'transactions';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'customer_id', 'item_id', 'imageitem_id', 'quantity', 'total', 'transaction_status', 
+        'user_id', 'ongkir', 'total', 'transaction_status', 'transaction_type' 
     ];
 
     protected $hidden = [];
 
-    public function etalase_item()
+    public function item()
     {
-        return $this->belongsTo(EtalaseModel::class, 'item_id', 'id');
+        return $this->hasMany(SubTransactionModel::class, 'transaction_id', 'id');
     }
 
     public function customers()
     {
-        return $this->belongsTo(CustomerModel::class, 'customer_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function transactionImage(){

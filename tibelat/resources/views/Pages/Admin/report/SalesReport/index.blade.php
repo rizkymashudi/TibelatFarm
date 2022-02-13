@@ -28,10 +28,10 @@
                         <tr>
                             <th>#</th>
                             <th>Transaction date</th>
-                            <th>Total stocks</th>
-                            <th>Total item terjual</th>
+                            <th>Total stocks / item transaksi</th>
+                            <th>Total qty terjual</th>
                             <th>Total sisa</th>
-                            <th>Total income</th>
+                            <th>(Rp) Total income / hari</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,10 +42,10 @@
                         <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $item->date }}</td>
-                            <td></td>
+                            <td>{{ $item->total_stocks }}</td>
                             <td>{{ $item->total_sold }}</td>
                             <td>{{ $item->total_balance }}</td>
-                            <td>{{ $item->total_incomes }}</td>
+                            <td>{{ number_format($item->total_incomes) }}</td>
                         </tr>
                         @php
                             $no++;

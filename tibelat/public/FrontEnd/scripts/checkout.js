@@ -7,27 +7,27 @@ const sr = ScrollReveal({
 
 sr.reveal('.checkout__cart', {
     origin: 'left',
-    delay: 200
+    interval: 100
 })
 
 sr.reveal('.checkout__detail', {
     origin: 'right',
-    delay: 400
+    interval: 100
 })
 
 sr.reveal('.image__success', {
     origin: 'top',
-    delay: 200
+    interval: 100
 })
 sr.reveal('.head__greetings', {
     origin: 'top',
-    delay: 200
+    interval: 100
 })
 sr.reveal('.paragraf', {
     origin: 'bottom',
-    delay: 200
+    interval: 100
 })
 sr.reveal('.return__home', {
     origin: 'bottom',
-    delay: 200
+    interval: 100
 })

@@ -32,7 +32,7 @@
                             <th>stock awal</th>
                             <th>terjual</th>
                             <th>sisa</th>
-                            <th>total penjualan</th>
+                            <th>(Rp) total penjualan / item</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +47,7 @@
                             <td>{{ $item->item->stocks }}</td>
                             <td>{{ $item->sold }}</td>
                             <td>{{ $item->balance }}</td>
-                            <td>{{ $item->total_incomes }}</td>
+                            <td>{{ number_format($item->total) }}</td>
                         </tr>
                         @php
                             $no++;

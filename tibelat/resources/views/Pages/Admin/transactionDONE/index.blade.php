@@ -20,8 +20,8 @@
                             <th>address</th>
                             <th>phone</th>
                             <th>item</th>
-                            <th>quantity</th>
-                            <th>total</th>
+                            <th>total quantity</th>
+                            <th>(Rp) total bayar</th>
                             <th>transaction type</th>
                             <th>status</th>
                             <th>checkout date</th>
@@ -32,16 +32,20 @@
                         @php
                             $no = 1;
                         @endphp
-                        @forelse ($items as $item)
+                        @forelse ($transactions as $item)
                         <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->customers->username }}</td>
+                            <td>{{ $item->customers->name }}</td>
                             <td>{{ $item->customers->address }}</td>
                             <td>{{ $item->customers->phone }}</td>
-                            <td>{{ $item->etalase_item->items_name}}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->total }}</td>
+                            <td>
+                                @foreach ($item->item as $name)
+                                    {{ $name->item_name}},
+                                @endforeach
+                            </td>
+                            <td>{{ $item->item->sum('quantity') }}</td>
+                            <td>{{ number_format($item->total) }}</td>
                             <td>{{ $item->transaction_type }}</td>
                             <td>{{ $item->transaction_status }}</td>
                             <td>{{ $item->updated_at }}</td>

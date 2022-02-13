@@ -50,7 +50,7 @@
         <tr>
             <td>{{$no}}</td>
             <td>{{ $item->date }}</td>
-            <td></td>
+            <td>{{ $item->total_stocks }}</td>
             <td>{{ $item->total_sold }}</td>
             <td>{{ $item->total_balance }}</td>
             <td>{{ $item->total_incomes }}</td>

@@ -8,6 +8,7 @@ use App\Models\TransactionsModel;
 use App\Models\CustomerModel;
 use App\Models\TransactionsImageModel;
 use App\Models\SalesReportModel;
+use App\Models\SubTransactionModel;
 use App\Http\Requests\Admin\TransactionRequest;
 use App\Http\Requests\Admin\TransactionImageRequest;
 use Illuminate\Support\Str;
@@ -22,11 +23,11 @@ class TransactionTFController extends Controller
      */
     public function index()
     {
-        $items = TransactionsModel::with(['etalase_item', 'customers', 'transactionImage'])
+        $transactions = TransactionsModel::with(['item', 'customers', 'transactionImage'])
                                     ->where('transaction_type', '=', 'TRANSFER')
                                     ->get();
 
-        return view('Pages.admin.transactionTF.index', ['items' => $items]);
+        return view('Pages.admin.transactionTF.index', ['transactions' => $transactions]);
     }
 
     /**
@@ -39,7 +40,7 @@ class TransactionTFController extends Controller
         $transactions = TransactionsModel::with(['etalase_item', 'customers'])
                                         ->where('transaction_type', '=', 'TRANSFER')
                                         ->get();
-        // dd($transactions);
+
 
         return view('Pages.admin.transactionTF.create', ['transactions' => $transactions]);
     }
@@ -58,7 +59,7 @@ class TransactionTFController extends Controller
         $data['image'] = $request->file('image')->store('assets/Transfer_image', 'public');
         TransactionsImageModel::create($data);
 
-        Alert::toast('Success', 'Data berhasil ditambahkan');
+        Alert::toast('Data berhasil ditambahkan!', 'success');
         return redirect()->route('transactionTF.index');
     }
 
@@ -93,15 +94,32 @@ class TransactionTFController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TransactionRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        
         TransactionsModel::findOrFail($id)->update($data);
-        $salesReportInput = TransactionsModel::findOrFail($id)->where('transaction_status', '=', 'SUCCESS')
-                                                            ->first();
-        SalesReportModel::create($salesReportInput);
+        
+        //ngambil data transaksi TF sukses berdasarkan id
+        $salesReportInput = SubTransactionModel::join('transactions', 'transactions.id', '=', 'sub_transactions.transaction_id')
+                                                ->join('items', 'items.id', '=', 'sub_transactions.item_id')
+                                                ->select('sub_transactions.*', 'items.current_stocks')
+                                                ->where('transactions.id', '=', $id)
+                                                ->where('transactions.transaction_status', '=', 'SUCCESS')
+                                                ->get();
+    
+        foreach($salesReportInput as $key => $report):
+            //update data transaksi TF sukses ke salesreport
+            SalesReportModel::create([
+                'transaction_id' => $report->transaction_id,
+                'subtransaction_id' => $report->id,
+                'item_id'   => $report->item_id,
+                'sold'  => $report->quantity,
+                'balance' => $report->current_stocks
+            ]);
+        endforeach;
 
-        Alert::toast('Success', 'Data berhasil diubah');
+        Alert::toast('Data berhasil diubah', 'success');
         return redirect()->route('transactionTF.index');
     }
 
@@ -116,7 +134,7 @@ class TransactionTFController extends Controller
         $item = TransactionsModel::findOrFail($id);
         $item->delete();
 
-        Alert::toast('Success', 'Data berhasil dihapus');
+        Alert::toast('data berhasil dihapus!', 'success');
         return redirect()->route('etalase.index');
     }
 }

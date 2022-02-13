@@ -27,8 +27,8 @@
                     @if(Auth::check())
                         <a href="{{ route('cart') }}" class="nav-link cart {{ set_active('cart') }}">
                             <i class="fas fa-shopping-cart"></i>
-                            @if(App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() > 0)
-                                <span class="badge badge-danger">{{ App\Models\TransactionsModel::where('transaction_status', '=', 'IN_CART')->count() }}</span>
+                            @if(App\Models\CartModel::count() > 0)
+                                <span class="badge badge-danger">{{ App\Models\CartModel::count() }}</span>
                             @endif
                             {{-- <span class="badge bg-danger ms-2 text-white">8</span> --}}
                         </a>

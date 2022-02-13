@@ -29,7 +29,7 @@ class EtalaseModel extends Model
     }
 
     public function salesReport(){
-        return $this->belongsTO(SalesReportModel::class, 'items_id', 'id');
+        return $this->belongsTo(SalesReportModel::class, 'item_id', 'id');
     }
 
 

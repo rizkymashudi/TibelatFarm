@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="item name">Stocks</label>
-                    <input type="number" class="form-control" name="stocks" placeholder="item stocks" min="0" maxlength="10" value="{{ $item->stocks }}">
+                    <input type="number" class="form-control" name="current_stocks" placeholder="item stocks" min="0" maxlength="10" value="{{ $item->current_stocks }}">
                 </div>
                 <div class="form-group">
                     <label for="item name">Harga</label>

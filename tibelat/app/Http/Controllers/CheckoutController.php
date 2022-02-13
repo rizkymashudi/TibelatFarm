@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\MessageBag;
+use App\Models\CartModel;
 use App\Models\EtalaseModel;
 use App\Models\CustomerModel;
 use App\Models\TransactionsModel;
 use App\Models\EtalaseGalleryModel;
 use App\Models\TransactionsImageModel;
+use App\Models\SubTransactionModel;
 use App\Models\SalesReportModel;
+use App\Http\Requests\CheckOutRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -19,155 +24,152 @@ class CheckoutController extends Controller
 {
 
     public function index(Request $request){
+        $itemCart = CartModel::with(['etalase_item', 'item_image'])->where('user_id', Auth::user()->id)
+                                ->get();
 
-      
-        $itemCart = TransactionsModel::with(['etalase_item', 'customers', 'product_image'])
-                        ->where('transaction_status', '=', 'IN_CART')
-                        ->get();
-
-        
-        $customerAddress = TransactionsModel::with(['etalase_item', 'customers', 'product_image'])
-                                        ->where('transaction_status', '=', 'IN_CART')
-                                        ->first();
-
-        return view('Pages.checkout', ['itemCart' => $itemCart, 'customerAddress' => $customerAddress]);
+        return view('Pages.checkout', ['itemCart' => $itemCart]);
     }
-
 
     //masukan item ke cart
     public function process(Request $request, $id){
 
         $itemProduct = EtalaseModel::with('galleries')->findOrFail($id);
+
+        $itemInCart = CartModel::where('user_id', '=', Auth::user()->id)
+                                ->where('item_id', '=', $id)
+                                ->first();
         
-        $customer = CustomerModel::where('user_id', '=', Auth::user()->id)->first();
-
-        // dd($itemProduct->galleries[0]->id);
-
-        if( Auth::user()->name === $customer->username):
-            $transaction = TransactionsModel::create([
-                'customer_id'   => $customer->id,
-                'item_id'       => $id,
-                'imageitem_id'  => $itemProduct->galleries[0]->id,
-                'quantity'      => 0,
-                'total'         => $itemProduct->price,
-                'transaction_status' => 'IN_CART',
-                'transaction_type'   => 'TRANSFER',
-                'created_at'    => now()
-            ]);
+        //Panggil image default untuk item baru
+        $filename = "default-placeholder.png";
+        $path = Storage::url('assets/' . $filename);
+    
+        if(!$itemInCart):
+            if(empty($itemProduct->galleries->toArray())):    //check if item has not image
+                
+                $cart = CartModel::create([
+                    'user_id' => Auth::user()->id,
+                    'item_id' => $id,
+                    'imageitem_id' => 0,
+                    'quantity'=> 1
+                ]);
+            else:
+                $cart = CartModel::create([
+                    'user_id' => Auth::user()->id,
+                    'item_id' => $id,
+                    'imageitem_id' => $itemProduct->galleries[0]->id,
+                    'quantity'=> 1
+                ]);
+            endif;
         else:
-            Alert::error('input gagal!', 'sepertinya ada yang salah');
-            return redirect()->back();
+            $qty = $itemInCart->quantity + 1;
+            $cart = CartModel::where('user_id', '=', Auth::user()->id)
+                            ->where('item_id', '=', $id)
+                            ->update([
+                                'quantity' => $qty
+                            ]);
         endif;
 
         Alert::toast('item dimasukan ke keranjang', 'success');
-        return redirect()->back();        
+        return redirect()->route('etalase-katalog');        
     }
 
+    //masukan item kecart dan masuk ke page cart
     public function buynow(Request $request, $id){
 
         $itemProduct = EtalaseModel::with('galleries')->findOrFail($id);
+
+        $itemInCart = CartModel::where('user_id', '=', Auth::user()->id)
+                                ->where('item_id', '=', $id)
+                                ->first();
         
-        $customer = CustomerModel::where('user_id', '=', Auth::user()->id)->first();
-
-        // dd($itemProduct->galleries[0]->id);
-
-        if( Auth::user()->name === $customer->username):
-            $transaction = TransactionsModel::create([
-                'customer_id'   => $customer->id,
-                'item_id'       => $id,
-                'imageitem_id'  => $itemProduct->galleries[0]->id,
-                'quantity'      => 0,
-                'total'         => $itemProduct->price,
-                'transaction_status' => 'IN_CART',
-                'transaction_type'   => 'TRANSFER',
-                'created_at'    => now()
+        if(!$itemInCart):
+            $cart = CartModel::create([
+                'user_id' => Auth::user()->id,
+                'item_id' => $id,
+                'imageitem_id' => $itemProduct->galleries[0]->id,
+                'quantity'=> 1
             ]);
         else:
-            Alert::error('input gagal!', 'sepertinya ada yang salah');
-            return redirect()->back();
+            $qty = $itemInCart->quantity + 1;
+            $cart = CartModel::where('user_id', '=', Auth::user()->id)
+                            ->where('item_id', '=', $id)
+                            ->update([
+                                'quantity' => $qty
+                            ]);
         endif;
 
         Alert::toast('item dimasukan ke keranjang', 'success');
-        return redirect()->route('cart', $transaction->id);  
+        return redirect()->route('cart', $itemInCart->id);  
     }
 
+    //checkout item
     public function create(Request $request, $id){
+
+            if($request->subtotal === "0" || $request === 0){
+                return redirect()->back()->withErrors('quanity tidak boleh kosong');
+            }
+
+            $data = $request->all();
         
-        $data = $request->all();
-    
-        $validated = $request->validate([
-            'quantity' => 'required',
-            'total' => 'required'
-        ]);
+            //cek tipe transaksi
+            if($request->flexRadioDefault == 'TRANSFER'): 
+                $transaction_type = 'TRANSFER';
+                $transaction_status = 'SHIPPING';
+            else: 
+                
+                $transaction_type = 'COD';
+                $transaction_status = 'SHIPPING';
+            endif;
 
-        $transaction = TransactionsModel::findOrFail($id);
-        $item = EtalaseModel::where('id', $transaction->item_id)->first();
+            //Simpan data transaksi
+            $transactioncreate = TransactionsModel::create([
+                    'user_id' => Auth::user()->id,
+                    'total' => $request['subtotal'],
+                    'transaction_status' => $transaction_status,
+                    'transaction_type' => $transaction_type,
+                    'ongkir' => 10000,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
 
-        //cek id_item transaksi di tabel etalase
-        if($transaction->item_id === $item->id):
-            if($request->flexRadioDefault == 'TRANSFER'):    //cek metode pembayaran
+           
+            //simpan bukti tf
+            if($request->flexRadioDefault == 'TRANSFER'): 
                 $image = $request->file('tfimage')->store('assets/Transfer_image', 'public'); //upload image
-                //update tabel transaksi
-                TransactionsModel::where('id', $id)
-                                ->where('transaction_status', 'IN_CART')
-                                ->update([
-                                    'quantity' => $request->quantity,
-                                    'total' => $request->total,
-                                    'transaction_status' => 'SUCCESS',
-                                    'transaction_type'  => 'TRANSFER',
-                                    'updated_at'    => now()
-                                ]);
-
-                //simpan bukti tf
+                
                 TransactionsImageModel::create([
-                    'transaction_id' => $id,
+                    'transaction_id' => $transactioncreate->id,
                     'image' => $image
                 ]);
+            endif;
+
+            
+
+            //simpan detail item transaksi 
+            foreach($data['quantity'] as $key => $qt):
+
+                $item = EtalaseModel::where('id', $data['itemid'][$key])->first();
 
                 //kurangi stok dengan qty 
-                EtalaseModel::where('id', $transaction->item_id)
+                EtalaseModel::where('id', $data['itemid'][$key])
                             ->update([
-                                'current_stocks' => $item->current_stocks - $request->quantity
+                                'current_stocks' => $item->current_stocks - $data['quantity'][$key]
                             ]);
-                
-                //update tabel sales report
-                SalesReportModel::create([
-                    'transaction_id' => $id,
-                    'item_id' => $transaction->item_id,
-                    'sold' => $request->quantity,
-                    'balance' => $item->current_stocks - $request->quantity,
-                    'total_incomes' => $request->total,
-                    'created_at' => $item->created_at
+            
+                SubTransactionModel::create([
+                    'transaction_id' => $transactioncreate->id,
+                    'item_id' => $data['itemid'][$key],
+                    'item_name' => $item->items_name,
+                    'quantity' => $data['quantity'][$key],
+                    'price' => $item->price,
+                    'total' => $data['total'][$key],
+                    
                 ]);
-                
-            else:
-                TransactionsModel::where('id', $id)
-                                ->where('transaction_status', 'IN_CART')
-                                ->update([
-                                    'quantity' => $request->quantity,
-                                    'total' => $request->total,
-                                    'transaction_status' => 'SHIPPING',
-                                    'transaction_type'  => 'COD',
-                                    'updated_at'    => Carbon::now()
-                                ]);
+    
+            endforeach;
 
-                EtalaseModel::where('id', $transaction->item_id)
-                            ->update([
-                                'current_stocks' => $item->current_stocks - $request->quantity
-                            ]);
-
-                 //update tabel sales report
-                 SalesReportModel::create([
-                    'transaction_id' => $id,
-                    'item_id' => $transaction->item_id,
-                    'sold' => $request->quantity,
-                    'balance' => $item->current_stocks - $request->quantity,
-                    'total_incomes' => $request->total,
-                    'created_at' => $item->created_at
-                ]);
-            endif;
-        endif;
-
+            //hapus item di cart
+            CartModel::where('user_id', '=', Auth::user()->id)->delete();
        
 
         Alert::alert('Pembelian berhasil!', 'Item berhasil dicheckout');
@@ -175,15 +177,16 @@ class CheckoutController extends Controller
 
     }
 
+    //hapus item di cart
     public function remove(Request $request, $id){
-        $item = TransactionsModel::findOrFail($id);
-        $item->delete();
+        $itemInCart = CartModel::findOrFail($id);
+        $itemInCart->delete();
 
         Alert::toast('item dihapus dari keranjang', 'success');
         return redirect()->back();
     }
 
-
+    
     public function success(Request $request, $id){
         return view('Pages.success');
     }

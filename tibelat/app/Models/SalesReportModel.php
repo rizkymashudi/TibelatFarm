@@ -13,7 +13,7 @@ class SalesReportModel extends Model
     protected $table = 'sales_reports';
 
     protected $fillable = [
-        'transaction_id', 'item_id', 'sold', 'balance', 'total_incomes', 
+        'transaction_id', 'subtransaction_id', 'item_id', 'sold', 'balance', 
     ];
 
     protected $hidden = [];

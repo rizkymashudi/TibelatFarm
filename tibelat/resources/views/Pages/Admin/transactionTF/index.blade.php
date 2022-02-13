@@ -23,8 +23,8 @@
                             <th>address</th>
                             <th>phone</th>
                             <th>item</th>
-                            <th>quantity</th>
-                            <th>total</th>
+                            <th>total quantity</th>
+                            <th>(Rp) total bayar</th>
                             <th>bukti transfer</th>
                             <th>status</th>
                             <th>checkout date</th>
@@ -36,27 +36,31 @@
                             $no = 1;
                         @endphp
                         {{-- {{ dd($items) }} --}}
-                        @forelse ($items as $item)
+                        @forelse ($transactions as $transaction)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->customers->username }}</td>
-                            <td>{{ $item->customers->address }}</td>
-                            <td>{{ $item->customers->phone }}</td>
-                            <td>{{ $item->etalase_item->items_name}}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->total }}</td>
+                            <td>{{ $transaction->id }}</td>
+                            <td>{{ $transaction->customers->name }}</td>
+                            <td>{{ $transaction->customers->address }}</td>
+                            <td>{{ $transaction->customers->phone }}</td>
                             <td>
-                                @if(isset($item->transactionImage->image))
-                                    <img src="{{ Storage::url($item->transactionImage->image) }}" alt="" style="width: 150px" class="img-thumbnail"/>
+                                @foreach ( $transaction->item as $itemname )
+                                    {{ $itemname->item_name }},
+                                @endforeach
+                            </td>
+                            <td>{{ $transaction->item->sum('quantity') }}</td>
+                            <td>{{ number_format($transaction->total) }}</td>
+                            <td>
+                                @if(isset($transaction->transactionImage->image))
+                                    <img src="{{ Storage::url($transaction->transactionImage->image) }}" alt="" style="width: 150px" class="img-thumbnail"/>
                                 @else
                                     Belum ditransfer 
                                 @endif
                             </td>
-                            <td>{{ $item->transaction_status }}</td>
-                            <td>{{ $item->created_at }}</td>
+                            <td>{{ $transaction->transaction_status }}</td>
+                            <td>{{ $transaction->created_at }}</td>
                             <td>
-                                <a href="{{ route('transactionTF.edit', $item->id )}}" class="btn btn-info">
+                                <a href="{{ route('transactionTF.edit', $transaction->id )}}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                             </td>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CustomerModel;
+use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
@@ -15,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = CustomerModel::all();
+        $customers = User::where('name', '!=', 'admin')->get();
         return view('Pages.admin.customer.index', compact('customers'));
     }
 
@@ -82,6 +84,9 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        Alert::toast('data berhasil dihapus!', 'success');
+        return redirect()->back();
     }
 }

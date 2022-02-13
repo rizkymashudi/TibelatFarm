@@ -22,7 +22,7 @@
                             <th data-priority="1">item</th>
                             <th data-priority="2">description</th>
                             <th>stocks</th>
-                            <th>price</th>
+                            <th>price (Rp)</th>
                             <th>action</th>
                         </tr>
                     </thead>
@@ -37,7 +37,7 @@
                             <td>{{ $item->items_name }}</td>
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->current_stocks }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ number_format($item->price) }}</td>
                             <td>
                                 <a href="{{ route('etalase.edit', $item->id )}}" class="btn btn-info">
                                     <i class="fas fa-pencil-alt"></i>

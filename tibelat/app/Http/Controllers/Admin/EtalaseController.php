@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use App\Models\EtalaseModel;
+use App\Models\CartModel;
 use App\Http\Requests\Admin\EtalaseRequest;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -39,15 +41,23 @@ class EtalaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EtalaseRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
+        // $req = $request->all();
+
+        $data = $request->validate([
+            'items_name' => 'required|max:255',
+            'description' => 'required',
+            'stocks' => 'required|integer|min:0',
+            'price' => 'required|integer|min:0'
+        ]);
+
         $data['slug'] = Str::slug($request->items_name);
         $data['current_stocks'] = $request->stocks;
         
         EtalaseModel::create($data);
 
-        Alert::toast('Success', 'Data berhasil ditambahkan');
+        Alert::toast('Data berhasil ditambahkan!', 'success');
         return redirect()->route('etalase.index');
     }
 
@@ -86,9 +96,10 @@ class EtalaseController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->items_name);
+    
         EtalaseModel::findOrFail($id)->update($data);
 
-        Alert::toast('Success', 'Data berhasil diubah');
+        Alert::toast('Data berhasil diubah!', 'success');
         return redirect()->route('etalase.index');
     }
 
@@ -101,9 +112,16 @@ class EtalaseController extends Controller
     public function destroy($id)
     {
         $item = EtalaseModel::findOrFail($id);
-        $item->delete();
+        
+        $itemInCart = CartModel::where('item_id', $id)->first();
+        if($itemInCart) {
+            Alert::toast('item tidak dapat dihapus karena sedang didalam transaksi!', 'error');
+            return redirect()->route('etalase.index');
+        } else {
+            $item->delete();
+            Alert::toast('Data berhasil dihapus!', 'success');
+            return redirect()->route('etalase.index');
+        }
 
-        Alert::toast('Success', 'Data berhasil dihapus');
-        return redirect()->route('etalase.index');
     }
 }

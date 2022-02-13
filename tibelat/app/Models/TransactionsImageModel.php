@@ -24,5 +24,7 @@ class TransactionsImageModel extends Model
         return $this->belongsTo(TransactionsModel::class, 'transaction_id', 'id');
     }
 
+    
+
 
 }

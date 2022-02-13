@@ -12,15 +12,13 @@ use DB;
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        $incomes = SalesReportModel::with(['itemStocks'])->select(
+        $incomes = SalesReportModel::join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')
+                                ->select(
                                             DB::raw('DATE(created_at) as date'),
-                                            DB::raw('SUM(sold) as total_sold'),
-                                            DB::raw('SUM(balance) as total_balance'),
-                                            DB::raw('SUM(total_incomes) as total_incomes'))
+                                            DB::raw('SUM(total) as total_incomes'))
                                 ->groupBy('date')
                                 ->orderBy('date', 'desc')
                                 ->first();
-     
 
         return view('pages.admin.dashboard', [
             'produk'    => EtalaseModel::count(),

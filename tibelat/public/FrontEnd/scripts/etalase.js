@@ -7,12 +7,12 @@ const sr = ScrollReveal({
 
 sr.reveal('.head__title', {
     origin: 'left',
-    delay: 100
+    interval: 100
 })
 
 sr.reveal('.head__subtitle', {
     origin: 'right',
-    delay: 500
+    interval: 100
 })
 
 sr.reveal('.sort', {
@@ -22,16 +22,16 @@ sr.reveal('.sort', {
 
 sr.reveal('.etalase', {
     origin: 'bottom',
-    delay: 400
+    interval: 100
 })
 
 sr.reveal('.item__cart', {
     origin: 'left',
-    delay: 200
+    interval: 100
 })
 
 sr.reveal('.cart__detail', {
     origin: 'right',
-    delay: 400
+    interval: 100
 })
 
