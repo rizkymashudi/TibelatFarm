@@ -86,10 +86,11 @@ class GalleryEtalaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(GalleryRequest $request, $id)
-    {
-
+    {   
         $data = $request->all();
+        
         $data['image'] = $request->file('image')->store('assets/gallery', 'public');
+        
         $a = EtalaseGalleryModel::findOrFail($id)->update($data);
     
 

@@ -26,8 +26,8 @@
                 @csrf
                 <div class="form-group">
                     <label for="items_id">Etalase items</label>
-                    <select name="items_id" required disabled class="form-control">
-                        <option value="{{ $item->items_id }}">id gallery: {{ $item->id }}</option>
+                    <select name="items_id" class="form-control">
+                        <option value="{{ $item->items_id }}">id gallery: {{ $item->id }} (jangan diganti)</option>
                         @foreach ($etalaseItems as $item)
                             <option value="{{ $item->id }}">
                                 {{ $item->items_name }}
