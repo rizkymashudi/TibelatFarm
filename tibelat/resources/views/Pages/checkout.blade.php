@@ -43,7 +43,7 @@
                                             <td>Produk</td>
                                             <td>Nama</td>
                                             <td>Kuantitas</td>
-                                            <td>Harga(Rp) / ekor</td>
+                                            <td>Harga(Rp) / kg</td>
                                             <td>Total(Rp)</td>
                                             <td></td>
                                         </tr>
@@ -58,7 +58,7 @@
                                                     <input type="hidden" name="idcart[]" value="{{ $item->id }}">
                                                     <input type="hidden" name="itemid[]" value="{{ $item->item_id }}">
                                                     @if(!empty($item->item_image))
-                                                        <img src="{{ Storage::url($item->item_image->image->first()->path) }}" alt="" width="100px" height="100px">
+                                                        <img src="{{ Storage::url($item->item_image->image) }}" alt="" width="100px" height="100px">
                                                     @else
                                                         <img src="{{ Storage::url('assets/default-placeholder.png') }}" height="60">
                                                     @endif

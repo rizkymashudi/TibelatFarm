@@ -14,7 +14,10 @@ class DetailLaporanPenjualanExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        $items = SalesReportModel::with(['item'])->get();
+        $items = SalesReportModel::join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')
+                                    ->get();
+
+        dd($items->toArray());
         return $items;
     }
 
@@ -26,9 +29,7 @@ class DetailLaporanPenjualanExport implements FromCollection, WithHeadings
             'Stok awal / ekor',
             'Terjual / ekor',
             'Sisa / ekor',
-            'Total penjualan',
-            'created_at',
-            'updated_at'
+            'Total penjualan (Rp)',
         ];
     }
 }

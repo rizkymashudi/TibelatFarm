@@ -15,14 +15,18 @@ class LaporanPenjualanExport implements FromCollection, WithHeadings
     public function collection()
     {
         
-        $items= SalesReportModel::with(['itemStocks'])->select(
-                                            DB::raw('DATE(created_at) as date'),
-                                            DB::raw('SUM(sold) as total_sold'),
-                                            DB::raw('SUM(balance) as total_balance'),
-                                            DB::raw('SUM(total_incomes) as total_incomes'))
-                                ->groupBy('date')
-                                ->orderBy('date', 'desc')
-                                ->get();  
+        $items = SalesReportModel::Join('items', 'items.id', '=', 'sales_reports.item_id')
+                                    ->Join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')     
+                                    ->select(
+                                                DB::raw('DATE(sales_reports.created_at) as date'),
+                                                DB::raw('SUM(sold) as total_sold'),
+                                                DB::raw('SUM(balance) as total_balance'),
+                                                DB::raw('SUM(stocks) as total_stocks'),
+                                                DB::raw('SUM(sub_transactions.total) as total_incomes'),
+                                            )
+                                    ->groupBy('date')
+                                    ->orderBy('date', 'desc')
+                                    ->get();
         return $items;
     }
 

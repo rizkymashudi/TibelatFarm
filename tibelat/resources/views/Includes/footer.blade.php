@@ -11,7 +11,7 @@
                     <div class="col-12 col-lg-3">
                         <h5>Tentang kami</h5>
                         <ui class="list-unstyled">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <p align="justify">Tibelat Farm adalah tempat pembudidayaan ikan air tawar nomor 1 dibatam dan sudah mendapatkat sertifikat Akreditas EXCELENT untuk CPIB (Cara Perbenihan Ikan Baik) Khusus Komuditas Ikan Nila dan Ikan Mas.</p>
                         </ui>
                     </div>
                     <div class="col-12 col-lg-3">
@@ -26,10 +26,10 @@
                     <div class="col-12 col-lg-3">
                         <h5>Lokasi</h5>
                         <ui class="list-unstyled">
-                            <li><a href="#"></a>Batam</li>
+                            <li><a href="#"></a>Marina, Tanjung Riau</li>
                             <li><a href="#"></a>Indonesia</li>
-                            <li><a href="#"></a>0888-XXXX-XXXX</li>
-                            <li><a href="#"></a>CustomerService@Tibelatfarm.com</li>
+                            <li><a href="#"></a>0813-7270-4648</li>
+                            <li><a href="#"></a>ray.tibelatt@gmail.com</li>
                         </ui>
                     </div>
                 </div>

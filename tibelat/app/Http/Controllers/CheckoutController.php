@@ -26,6 +26,7 @@ class CheckoutController extends Controller
     public function index(Request $request){
         $itemCart = CartModel::with(['etalase_item', 'item_image'])->where('user_id', Auth::user()->id)
                                 ->get();
+        // dd($itemCart->toArray());
 
         return view('Pages.checkout', ['itemCart' => $itemCart]);
     }
@@ -99,7 +100,7 @@ class CheckoutController extends Controller
         endif;
 
         Alert::toast('item dimasukan ke keranjang', 'success');
-        return redirect()->route('cart', $itemInCart->id);  
+        return redirect()->route('cart', $itemInCart);  
     }
 
     //checkout item

@@ -39,7 +39,7 @@
                     <p>Penjualan</p>
                 </div>
                 <div class="col-3 col-md-2 stats-detail">
-                    <h2>5</h2>
+                    <h2>13</h2>
                     <p>Jenis ikan</p>
                 </div>
                 <div class="col-3 col-md-2 stats-detail">
@@ -132,14 +132,14 @@
                         <div class="card card-testimonial text-center testi__card1">
                             <div class="testimonial-content">
                                 <img src="FrontEnd/images/customer1.jpg" alt="User" class="userImg mb-4 rounded-circle">
-                                <h3 class="mb-4">Siti</h3>
+                                <h3 class="mb-4">Ari</h3>
                                 <p class="testimonial">
-                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                                    "Adanya ikan ikan di Tibelat Farm ini rasanya pengen mesan terus menerus."
                                 </p>
                             </div>
                             <hr>
                             <p class="which-fish mt-2">
-                                Ikan Cupang 
+                                Ikan Gurame 
                             </p>
                         </div>
                     </div>
@@ -147,14 +147,14 @@
                         <div class="card card-testimonial text-center testi__card2">
                             <div class="testimonial-content">
                                 <img src="FrontEnd/images/customer2.jpg" alt="User" class="userImg mb-4 rounded-circle">
-                                <h3 class="mb-4">Nur</h3>
+                                <h3 class="mb-4">Firman</h3>
                                 <p class="testimonial">
-                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                                    "Ikan Ikan di Tibelat ini sangat fresh dan tidak bau lumpur."
                                 </p>
                             </div>
                             <hr>
                             <p class="which-fish mt-2">
-                                Ikan Salmon 
+                                Ikan Patin 
                             </p>
                         </div>
                     </div>
@@ -162,14 +162,14 @@
                         <div class="card card-testimonial text-center testi__card3">
                             <div class="testimonial-content">
                                 <img src="FrontEnd/images/user.png" alt="User" class="userImg mb-4 rounded-circle">
-                                <h3 class="mb-4">Ari</h3>
+                                <h3 class="mb-4">Aldo</h3>
                                 <p class="testimonial">
-                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                                    "Saya sangat puas dengan adanya ikan ditibelat farm ini."
                                 </p>
                             </div>
                             <hr>
                             <p class="which-fish mt-2">
-                                Ikan Mas 
+                                Ikan Nila 
                             </p>
                         </div>
                     </div>

@@ -72,13 +72,13 @@
                                 <tr>
                                     <th width="50%">Stok</th>
                                     <td width="50%" class="text-right">
-                                        {{ $item->current_stocks }} ekor
+                                        {{ $item->current_stocks }} kg
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="50%">Harga</th>
                                     <td width="50%" class="text-right">
-                                        Rp. {{ $item->price }} / ekor
+                                        Rp. {{ $item->price }} / kg
                                     </td>
                                 </tr>
                             </table>

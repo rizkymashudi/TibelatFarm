@@ -41,15 +41,17 @@ class SalesReportController extends Controller
 
     public function exportPDF(){
         $items = SalesReportModel::Join('items', 'items.id', '=', 'sales_reports.item_id')
-                                                        ->select(
-                                                                        DB::raw('DATE(sales_reports.created_at) as date'),
-                                                                        DB::raw('SUM(sold) as total_sold'),
-                                                                        DB::raw('SUM(balance) as total_balance'),
-                                                                        DB::raw('SUM(stocks) as total_stocks'),
-                                                                        DB::raw('SUM(total_incomes) as total_incomes'))
-                                                            ->groupBy('date')
-                                                            ->orderBy('date', 'desc')
-                                                            ->get();
+                                    ->Join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')     
+                                    ->select(
+                                                DB::raw('DATE(sales_reports.created_at) as date'),
+                                                DB::raw('SUM(sold) as total_sold'),
+                                                DB::raw('SUM(balance) as total_balance'),
+                                                DB::raw('SUM(stocks) as total_stocks'),
+                                                DB::raw('SUM(sub_transactions.total) as total_incomes'),
+                                            )
+                                    ->groupBy('date')
+                                    ->orderBy('date', 'desc')
+                                    ->get();
 
         $pdf = \PDF::loadView('Pages.admin.report.SalesReport.pdf', ['items' => $items]);
         $pdfname = now()->toDateString();

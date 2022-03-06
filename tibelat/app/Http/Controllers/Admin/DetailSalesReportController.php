@@ -26,7 +26,8 @@ class DetailSalesReportController extends Controller
 
     public function exportPDF(){
         
-        $items = SalesReportModel::with(['item'])->get();
+        $items = SalesReportModel::join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')
+                                    ->get();
 
         $pdf = \PDF::loadView('Pages.admin.report.DetailSalesReport.pdf', ['items' => $items]);
         $pdfname = now()->toDateString();

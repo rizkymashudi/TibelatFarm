@@ -55,7 +55,7 @@
         <td>{{ $item->item->stocks }}</td>
         <td>{{ $item->sold }}</td>
         <td>{{ $item->balance }}</td>  
-        <td>{{ $item->total_incomes }}</td>
+        <td>{{ number_format($item->total) }}</td>
       </tr>
       @endforeach
       @php
