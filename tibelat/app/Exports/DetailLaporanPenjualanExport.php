@@ -17,7 +17,7 @@ class DetailLaporanPenjualanExport implements FromCollection, WithHeadings
         $items = SalesReportModel::join('sub_transactions', 'sub_transactions.id', '=', 'sales_reports.subtransaction_id')
                                     ->get();
 
-        dd($items->toArray());
+        ($items->toArray());
         return $items;
     }
 

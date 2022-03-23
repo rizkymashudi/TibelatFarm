@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-3">
                         <ui class="list-unstyled">
-                            <img src="FrontEnd/images/logo.png" alt="logo" class="logo-footer">
+                            <img src="{{ url('FrontEnd/images/logo.png') }}" alt="logo" class="logo-footer">
                         </ui>
                     </div>
                     <div class="col-12 col-lg-3">
