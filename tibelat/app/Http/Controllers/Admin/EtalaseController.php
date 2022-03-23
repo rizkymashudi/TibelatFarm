@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\EtalaseModel;
 use App\Models\CartModel;
+use App\Models\EtalaseGalleryModel;
 use App\Http\Requests\Admin\EtalaseRequest;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -112,6 +113,7 @@ class EtalaseController extends Controller
     public function destroy($id)
     {
         $item = EtalaseModel::findOrFail($id);
+        $imageItems = EtalaseGalleryModel::where('items_id', $id)->get();
         
         $itemInCart = CartModel::where('item_id', $id)->first();
         if($itemInCart) {
@@ -119,6 +121,9 @@ class EtalaseController extends Controller
             return redirect()->route('etalase.index');
         } else {
             $item->delete();
+            foreach($imageItems as $imageItem) {
+                $imageItem->delete();
+            }
             Alert::toast('Data berhasil dihapus!', 'success');
             return redirect()->route('etalase.index');
         }

@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EtalaseGalleryModel extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'images';
 
     protected $fillable = [
         'items_id', 'image'
     ];
+
+    protected $dates = ['deleted_at'];
 
     protected $hidden = [];
 

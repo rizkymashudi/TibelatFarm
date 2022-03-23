@@ -21,7 +21,7 @@ class GalleryEtalaseController extends Controller
     public function index()
     {
         $galleries = EtalaseGalleryModel::with('Etalase')->get();
-       
+      
         return view('Pages.admin.gallery.index', ['galleries' => $galleries]);
     }
 

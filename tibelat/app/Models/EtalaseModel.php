@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EtalaseModel extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'items';
 
@@ -16,6 +17,7 @@ class EtalaseModel extends Model
         'items_name', 'slug', 'description', 'stocks', 'current_stocks', 'price'
     ];
 
+    protected $dates = ['deleted_at'];
     protected $hidden = [];
 
 
