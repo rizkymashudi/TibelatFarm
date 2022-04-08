@@ -7,6 +7,7 @@ use App\Models\CustomerModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\TransactionsModel;
 
 class CustomerController extends Controller
 {
@@ -84,9 +85,16 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
+        $user = User::findOrFail($id);
+        $userTransaction = TransactionsModel::where('user_id', $id)->first();
 
-        Alert::toast('data berhasil dihapus!', 'success');
-        return redirect()->back();
+        if($userTransaction){
+            Alert::toast('user tidak dapat dihapus karena masih mempunyai transaksi!', 'error');
+            return redirect()->route('customer.index');
+        } else {
+            $user->delete();
+            Alert::toast('data berhasil dihapus!', 'success');
+            return redirect()->back();
+        }
     }
 }
